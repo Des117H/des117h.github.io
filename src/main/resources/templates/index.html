@@ -1,21 +1,18 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
 	<meta charset="utf-8">
 	<title>Login</title>
 	<link rel="stylesheet" href="../static/css/style.css">
 	<link rel="stylesheet" href="../static/css/login.css">
-	<script defer src="../static/js/login.js"></script>
+	<script src="https://kit.fontawesome.com/94b9d6322d.js" crossorigin="anonymous"></script>
 </head>
 <body>
-	<div id="header">
-
-	</div>
 	<div id="body">
 		<div class="imgcontainer">
 			<!-- <img id="backgroundimg1" src="../static/assest/image/login-background-1.jpeg" alt=""> -->
-			<img id="backgroundimg2" src="../static/assest/image/login-background-2.jpeg" alt="">
+			<img id="backgroundimg2" src="../static/image/login-background-2.jpeg" alt="">
 		</div>
 		<form action="action_page.php" method="post">
 			<div id="texttopform">
@@ -26,10 +23,12 @@
 				<input type="text" placeholder="Enter Email/Phone No" name="uname" required>
 				<input type="password" placeholder="Password" name="psw" required>
 
-				<button type="submit">Login</button>
+				<button class="button" type="submit">Login</button>
 			</div>
 		</form>
 	</div>
+	
+	<script defer src="" th:src ="@{js/login.js}"></script>
 </body>
 
 </html>

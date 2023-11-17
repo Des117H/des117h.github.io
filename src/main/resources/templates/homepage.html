@@ -6,21 +6,20 @@
 	<title>Homepage</title>
 	<link rel="stylesheet" href="" th:href = "@{/css/style.css}">
 	<link rel="stylesheet" href="" th:href = "@{/css/homepage.css}">
-	
+	<script src="https://kit.fontawesome.com/94b9d6322d.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
 	<div class="header-div">
 		<div class="icon-container logo-div">
-			<img class="circle-logo" src="" th:src ="@{/logo/circle/png/logo-no-background.png}" alt="logo">
-			<img class="name-logo" src="" th:src = "@{/assest/name/png/logo-no-background.png}" alt="logo">
+			<img class="circle-logo" src="" th:src ="@{/logo/circle.png}" alt="logo">
+			<img class="name-logo" src="" th:src = "@{/logo/name.png}" alt="logo">
 		</div>
 		<nav class="header-navigation">
 			<a href="#" class="account-link">Account</a>
 			<a href="#" class="logout-link">Log Out</a>
 		</nav>
 	</div>
-	
 
 	<div class="body-div">
 		<div class="search-bar">
@@ -30,13 +29,13 @@
 		<div class="doc-container">
 			<div class="doc-box">
 				<div class="left-box">
-					<img class="doc-logo" src="../static/assest/icon/doc.png" alt="document logo">
+					<i class="fa-regular fa-file fa-xl" alt="file icon"></i>
 					<p class="doc-name">test doc</p>
 				</div>
 
 				<div class="right-box">
 					<p class="doc-date">10/11/2023</p>
-					<img class="delete-logo" src="../static/assest/icon/delete.png" alt="delete logo">
+					<i class="fa-regular fa-trash-can fa-xl" alt="delete icon"></i>
 				</div>
 			</div>
 
