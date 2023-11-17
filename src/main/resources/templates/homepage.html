@@ -1,19 +1,19 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
 	<meta charset="utf-8">
 	<title>Homepage</title>
-	<link rel="stylesheet" href="../static/css/style.css">
-	<link rel="stylesheet" href="../static/css/homepage.css">
-	<script defer src="../static/js/homepage.js"></script>
+	<link rel="stylesheet" href="" th:href = "@{/css/style.css}">
+	<link rel="stylesheet" href="" th:href = "@{/css/homepage.css}">
+	
 </head>
 
 <body>
 	<div class="header-div">
 		<div class="icon-container logo-div">
-			<img class="circle-logo" src="../static/assest/logo/circle/png/logo-no-background.png" alt="logo">
-			<img class="name-logo" src="../static/assest/logo/name/png/logo-no-background.png" alt="logo">
+			<img class="circle-logo" src="" th:src ="@{/logo/circle/png/logo-no-background.png}" alt="logo">
+			<img class="name-logo" src="" th:src = "@{/image/logo-no-background.png}" alt="logo">
 		</div>
 		<nav class="header-navigation">
 			<a href="#" class="account-link">Account</a>
@@ -55,6 +55,8 @@
 			</template>
 		</div>
 	</div>
+
+	<script defer src="" th:src ="@{js/homepage.js}"> </script>
 </body>
 
 </html>
