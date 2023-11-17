@@ -29,11 +29,19 @@
 	width: 85%;
 	margin: auto;
 	border: #999 2px solid;
-	padding: 5px 10px;
+	padding: 10px;
 }
 
 .left-box, .right-box {
 	display: flex;
     flex-direction: row;
 	align-items: center;
+}
+
+.doc-name {
+	margin-left: 5px;
+}
+
+.doc-date {
+	margin-right: 5px;
 }
