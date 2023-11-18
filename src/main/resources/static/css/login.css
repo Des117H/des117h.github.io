@@ -1,83 +1,85 @@
-#header {
-    height: 75px;
-    background-color: var(--theme);
+* {
+    background-color: #ECE3CE;
 }
 
-#body {}
+#body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
 
 .imgcontainer {
-    position: relative;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
 }
 
 #backgroundimg1,
 #backgroundimg2 {
-    width: 700px;
-    height: 700px;
+    width: 35%;
+    height: 100vh;
 }
 
-#backgroundimg1 {
-    float: left;
-}
-
-#backgroundimg2 {
-    float: right;
+#logo {
+    margin-top: 10px;
+    width: 30vh;
 }
 
 #texttopform {
     text-align: center;
+    margin-bottom: 5px;
 }
 
-form {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 30%;
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container form {
+    margin-bottom: 35vh;
+}
+
+.container form .container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10vh;
+}
+
+form .container .input-box {
     margin-left: auto;
     margin-right: auto;
-    width: 30%;
-    border-radius: 25px;
-    border: 1px solid #ccc;
 }
 
-/* Full-width inputs */
-input[type=text],
-input[type=password] {
+.container .input-box .container {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.container .input-box input {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
-}
-
-/* Extra style for the cancel button (red) */
-.cancelbtn {
-    width: auto;
-    padding: 10px 18px;
-    background-color: #f44336;
-}
-
-/* Center the avatar image inside this container */
-.imgcontainer {
-    text-align: center;
-    margin: 24px 0 12px 0;
-}
-
-
-/* Add padding to containers */
-.container {
-    padding: 16px;
+    background-color: var(--white);
 }
 
 /* The "Forgot password" text */
-span.psw {
+span.password {
     float: right;
     padding-top: 16px;
 }
 
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
-    span.psw {
+    span.password {
         display: block;
         float: none;
     }

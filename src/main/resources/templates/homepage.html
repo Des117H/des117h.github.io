@@ -4,16 +4,16 @@
 <head>
 	<meta charset="utf-8">
 	<title>Homepage</title>
-	<link rel="stylesheet" href="" th:href = "@{/css/style.css}">
-	<link rel="stylesheet" href="" th:href = "@{/css/homepage.css}">
+	<link rel="stylesheet" href="" th:href="@{/css/style.css}">
+	<link rel="stylesheet" href="" th:href="@{/css/homepage.css}">
 	<script src="https://kit.fontawesome.com/94b9d6322d.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
 	<div class="header-div">
 		<div class="icon-container logo-div">
-			<img class="circle-logo" src="" th:src ="@{/logo/circle.png}" alt="logo">
-			<img class="name-logo" src="" th:src = "@{/logo/name.png}" alt="logo">
+			<img class="circle-logo" src="" th:src="@{/logo/circle.png}" alt="logo">
+			<img class="name-logo" src="" th:src="@{/logo/name.png}" alt="logo">
 		</div>
 		<nav class="header-navigation">
 			<a href="#" class="account-link">Account</a>
@@ -51,20 +51,20 @@
 			<template doc-template>
 				<div class="doc-box">
 					<div class="left-box">
-						<img class="doc-logo" src="resource/assest/icon/doc.png" alt="document logo">
+						<i class="fa-regular fa-file fa-xl" alt="file icon"></i>
 						<p class="doc-name"></p>
 					</div>
-	
+
 					<div class="right-box">
 						<p class="doc-date"></p>
-						<img class="delete-logo" src="resource/assest/icon/delete.png" alt="delete logo">
+						<i class="fa-regular fa-trash-can fa-xl" alt="delete icon"></i>
 					</div>
 				</div>
 			</template>
 		</div>
 	</div>
 
-	<script defer src="" th:src ="@{js/homepage.js}"> </script>
+	<script defer src="" th:src="@{js/homepage.js}"> </script>
 </body>
 
 </html>
