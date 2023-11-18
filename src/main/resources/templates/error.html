@@ -4,15 +4,11 @@
 <head>
     <meta charset="utf-8">
     <title>Error</title>
-    <link rel="stylesheet" href="resource/css/style.css">
-    <link rel="stylesheet" href="resource/css/error.css">
-    <script defer src="resource/js/error.js"></script>
+	<link rel="stylesheet" href="../static/css/style.css" th:href = "@{/css/style.css}">
+	<link rel="stylesheet" href="../static/css/error.css" th:href = "@{/css/error.css}">
 </head>
 
 <body>
-    <div id="header">
-
-    </div>
     <h1>404 Error Page</h1>
     <section class="error-container">
         <span class="four"><span class="screen-reader-text">4</span></span>
@@ -22,6 +18,7 @@
     <div class="link-container">
         <a target="_blank" href="/homepage.html" class="more-link">Return to homepage</a>
     </div>
+    <script defer src="resource/js/error.js"></script>
 </body>
 
 </html>
