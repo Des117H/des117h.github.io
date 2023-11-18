@@ -22,8 +22,17 @@
 	</div>
 
 	<div class="body-div">
+
 		<div class="search-bar">
 			<input type="search" placeholder="Search..." id="search" item-search>
+		</div>
+
+		<div>
+			<form action="/upload" method="post" enctype="multipart/form-data">
+				<label for="file">Choose a .doc or .docx file:</label>
+				<input type="file" name="file" id="file" accept=".doc, .docx" required>
+				<button type="submit">Upload</button>
+			</form>
 		</div>
 
 		<div class="doc-container">
