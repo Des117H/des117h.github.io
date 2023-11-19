@@ -4,16 +4,16 @@
 <head>
 	<meta charset="utf-8">
 	<title>Homepage</title>
-	<link rel="stylesheet" href="" th:href="@{/css/style.css}">
-	<link rel="stylesheet" href="" th:href="@{/css/homepage.css}">
+	<link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
+	<link rel="stylesheet" href="../static/css/homepage.css" th:href="@{/css/homepage.css}">
 	<script src="https://kit.fontawesome.com/94b9d6322d.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
 	<div class="header-div">
 		<div class="icon-container logo-div">
-			<img class="circle-logo" src="" th:src="@{/logo/circle.png}" alt="logo">
-			<img class="name-logo" src="" th:src="@{/logo/name.png}" alt="logo">
+			<img class="circle-logo" src="../static/logo/circle.png" th:src="@{/logo/circle.png}" alt="logo">
+			<img class="name-logo" src="../static/logo/name.png" th:src="@{/logo/name.png}" alt="logo">
 		</div>
 		<nav class="header-navigation">
 			<a href="#" class="account-link">Account</a>
@@ -27,10 +27,12 @@
 			<input type="search" placeholder="Search..." id="search" item-search>
 		</div>
 
-		<div>
+		<div class="add-doc">
 			<form action="/upload" method="post" enctype="multipart/form-data">
-				<label for="file">Choose a .doc or .docx file:</label>
-				<input type="file" name="file" id="file" accept=".doc, .docx" required>
+				<div class="add-doc-form">
+					<label for="file">Choose a .doc or .docx file:</label>
+					<input type="file" name="file" id="file" accept=".doc, .docx" required>
+				</div>
 				<button type="submit">Upload</button>
 			</form>
 		</div>

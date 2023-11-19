@@ -45,3 +45,18 @@
 .doc-date {
 	margin-right: 5px;
 }
+
+.add-doc {
+	border: 1px solid #000;
+	width: 85%;
+	margin: auto;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+
+.add-doc form button {
+	margin-right: 50%;
+	margin-left: 50%;
+	height: 5vh;
+	width: 10vh;
+}
