@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.multipart.MultipartFile;
 import software.amazon.awssdk.auth.credentials.EnvironmentVariableCredentialsProvider;
 import software.amazon.awssdk.core.sync.RequestBody;
+import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.s3.S3Client;
 import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 import software.amazon.awssdk.services.s3.model.PutObjectResponse;
@@ -15,7 +16,7 @@ import java.io.InputStream;
 @Service
 public class FileStorageService {
 
-    @Value("${aws.s3.grandmaly-architecture}")
+    @Value("${aws.s3.bucket-name}")
     private String bucketName;
 
     private final S3Client s3Client;
@@ -24,6 +25,7 @@ public class FileStorageService {
         // You can also use other ways to configure AWS credentials
         this.s3Client = S3Client.builder()
                 .credentialsProvider(EnvironmentVariableCredentialsProvider.create())
+                .region(Region.AP_SOUTHEAST_1)
                 .build();
     }
 
