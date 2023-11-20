@@ -14,7 +14,6 @@ import java.io.IOException;
 @RestController
 @RequestMapping("/api/files")
 public class FileUploadController {
-
     @Autowired
     private FileStorageService fileStorageService;
 
@@ -23,7 +22,7 @@ public class FileUploadController {
         try {
             // Generate a unique file name or use the original file name
             String fileName = "documents/" + System.currentTimeMillis() + "_" + file.getOriginalFilename();
-
+            
             // Upload the file to S3
             fileStorageService.uploadFile(fileName, file);
 

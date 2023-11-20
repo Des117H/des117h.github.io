@@ -19,18 +19,21 @@ public class FileStorageService {
     @Value("${aws.s3.bucket-name}")
     private String bucketName;
 
+
     private final S3Client s3Client;
+    
 
     public FileStorageService() {
         // You can also use other ways to configure AWS credentials
         this.s3Client = S3Client.builder()
-                .credentialsProvider(EnvironmentVariableCredentialsProvider.create())
                 .region(Region.AP_SOUTHEAST_1)
+                .credentialsProvider(EnvironmentVariableCredentialsProvider.create())
                 .build();
+
     }
 
     public void uploadFile(String fileName, MultipartFile file) throws IOException {
-        // Read the file into a byte array
+        // Read the file into a byte array        
         InputStream inputStream = file.getInputStream();
         byte[] bytes = inputStream.readAllBytes();
 
@@ -42,6 +45,7 @@ public class FileStorageService {
                 .bucket(bucketName)
                 .key(fileName)
                 .build();
+
         PutObjectResponse putObjectResponse = s3Client.putObject(putObjectRequest, requestBody);
 
         // Check if the upload was successful
