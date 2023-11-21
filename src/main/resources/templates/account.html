@@ -4,14 +4,30 @@
 <head>
 	<meta charset="utf-8">
 	<title>Account</title>
-	<link rel="stylesheet" href="../static/css/style.css" th:href = "@{/css/style.css}">
-	<link rel="stylesheet" href="../static/css/account.css" th:href = "@{/css/account.css}">
+	<link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
+	<link rel="stylesheet" href="../static/css/account.css" th:href="@{/css/account.css}">
 	<script src="https://kit.fontawesome.com/94b9d6322d.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
+	<div class="header-div">
+		<div class="icon-container logo-div">
+			<img class="circle-logo" src="../static/logo/circle.png" th:src="@{/logo/circle.png}" alt="logo">
+			<img class="name-logo" src="../static/logo/name.png" th:src="@{/logo/name.png}" alt="logo">
+		</div>
+		<nav class="header-navigation">
+			<a href="#" class="account-link">Account</a>
+			<a href="#" class="logout-link">Log Out</a>
+		</nav>
+	</div>
 
-	<script defer src="" th:src ="@{js/account.js}"></script>
+
+	<stripe-buy-button buy-button-id="buy_btn_1OENLcHGJ8Z2uMgtlpin9EJa"
+		publishable-key="pk_test_51ODSQ5HGJ8Z2uMgt2tAjoNvjY5fYnDuVvfdyQAm9Sl5OVaZ9ZdPr82VKSZAULyPA0QW4ZqG7t9KXYLORZEuguhEe00PB6H5jPy">
+	</stripe-buy-button>
+
+	<script async src="https://js.stripe.com/v3/buy-button.js"></script>
+	<script defer src="" th:src="@{js/account.js}"></script>
 </body>
 
 </html>
