@@ -9,7 +9,6 @@ public class controller {
 
     @GetMapping
     String getHome(Model model){
-       
         return "homepage";
     }
 }
