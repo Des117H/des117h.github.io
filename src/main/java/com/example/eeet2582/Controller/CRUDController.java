@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.example.eeet2582.Model.CRUD;
 import com.example.eeet2582.Service.CRUDService;
 
@@ -47,5 +46,3 @@ public class CRUDController {
             return ResponseEntity.ok("Test get Endpoint is Working");
         }
 }
-
-
