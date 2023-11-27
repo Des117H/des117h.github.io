@@ -1,5 +1,5 @@
 * {
-    background-color: #ECE3CE;
+    background-color: #fff;
 }
 
 #body {
@@ -28,7 +28,8 @@
 
 #texttopform {
     text-align: center;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
+    margin-top: 15px;
 }
 
 .container {
