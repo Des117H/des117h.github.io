@@ -1,11 +1,15 @@
 package com.example.eeet2582.Model;
 
+import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
 public class CRUD {
-    private String document_id;
+    private String id;
+    private String username;
+    private String password;
     private String name;
+    private List<String> uploadedFileReferences;
 }

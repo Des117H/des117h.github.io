@@ -1,12 +1,24 @@
 package com.example.eeet2582.Model;
 
-import lombok.Getter;
-import lombok.Setter;
+import java.time.LocalDateTime;
 
-@Getter
-@Setter
 public class FileDocument {
-    private String document_id;
-    private String url;
-    private String ownerID; 
+
+    private String filename;
+    private String contentType;
+    private String downloadUrl;
+    private LocalDateTime uploadedAt;
+    private Long userId;
+
+    // Getters and setters for file metadata attributes
+    @Override
+    public String toString() {
+        return "FileMetadata{" +
+                "filename='" + filename + '\'' +
+                ", contentType='" + contentType + '\'' +
+                ", downloadUrl='" + downloadUrl + '\'' +
+                ", uploadedAt=" + uploadedAt +
+                ", userId=" + userId +
+                '}';
+}
 }
