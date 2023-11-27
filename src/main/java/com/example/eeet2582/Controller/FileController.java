@@ -13,13 +13,13 @@ import com.example.eeet2582.Service.FileService;
 public class FileController {
     public FileService fileService;
 
-     public FileController(FileService fileService){
+    public FileController(FileService fileService) {
         this.fileService = fileService;
     }
-    
+
     @PostMapping("/upload")
-    public String uploadFile(@RequestParam(name = "file") MultipartFile file) throws IOException{
-        return fileService.saveTest(file);
+    public String uploadFile(@RequestParam(name = "file") MultipartFile file, @RequestParam(name = "user") String user) throws IOException {
+        return fileService.saveTest(file, user);
     }
 
 }
