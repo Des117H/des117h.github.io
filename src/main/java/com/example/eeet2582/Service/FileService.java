@@ -10,6 +10,8 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
 
 import java.io.IOException;
 import java.util.UUID;
@@ -34,8 +36,8 @@ public class FileService {
         }
     }
 
-    public String saveTest(MultipartFile file) throws IOException {
-        String imageName = generateFileName(file.getOriginalFilename());
+    public String saveTest(MultipartFile file, String userID) throws IOException {
+        String imageName = generateFileName(file.getOriginalFilename(), userID);
         System.out.println(imageName);
         Map<String, String> map = new HashMap<>();
         map.put("gs://architecture-grandma-bea3b.appspot.com", imageName);
@@ -48,8 +50,13 @@ public class FileService {
         return imageName;
     }
 
-    private String generateFileName(String originalFileName) {
-        return UUID.randomUUID().toString() + "." + getExtension(originalFileName);
+    private String generateFileName(String originalFileName, String userID) {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        String timeString = dtf.format(now).replace("/", "[").replace(" ", "_");
+        String fileName = userID + "/" + originalFileName.replace("." + getExtension(originalFileName),
+                "-" + timeString + "." + getExtension(originalFileName));
+        return fileName;
     }
 
     private String getExtension(String originalFileName) {

@@ -1,10 +1,12 @@
-/* search bar */
+* {
+	background-color: var(--theme);
+}
 .search-bar {
 	display: flex;
 	align-items: center;
 	min-width: 350px;
-	margin: 10px;
-	background-color: var(--theme);
+	width: 85vw;
+	margin: 10px auto;
 	border-radius: 10px;
 	border: 2px solid var(--se_primary);
 }
@@ -16,6 +18,7 @@
 	font-size: 16px;
 	outline: none;
 	border-radius: 10px;
+	width: 100%;
 }
 
 .search-bar input[type="search"]::placeholder {
@@ -40,10 +43,12 @@
 
 .doc-name {
 	margin-left: 5px;
+	font-size: 17px;
 }
 
 .doc-date {
 	margin-right: 5px;
+	font-size: 17px;
 }
 
 .add-doc {
@@ -52,6 +57,11 @@
 	margin: auto;
 	padding: 10px;
 	margin-bottom: 10px;
+	font-size: 16px!important;
+}
+
+.add-doc form {
+	font-size: 17px!important;
 }
 
 .add-doc form button {
