@@ -45,8 +45,8 @@ public class FileService {
     }
 
     public String saveTest(MultipartFile file) throws IOException {
-       
         String imageName = generateFileName(file.getOriginalFilename());
+        System.out.println(imageName);
         Map<String, String> map = new HashMap<>();
         map.put("gs://architecture-grandma-bea3b.appspot.com", imageName);
         BlobId blobId = BlobId.of("architecture-grandma-bea3b.appspot.com", imageName);
