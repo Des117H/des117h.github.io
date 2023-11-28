@@ -8,13 +8,11 @@ body {
     height: auto;
 }
 
-
+.button {}
 
 label.button {
     margin-bottom: 0;
 }
-
-.button {}
 
 .text-light {
     color: #babbbc !important;
