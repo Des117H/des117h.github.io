@@ -11,32 +11,72 @@
 
 <body>
 	<div id="body">
-		<div class="imgcontainer">
-			<img id="backgroundimg1" src="..\static\image\login-background-2.jpeg"
-				th:src="@{/image/login-background-2.png}" alt="">
-			<div class="container">
-				<img id="logo" src="..\static\logo\full.png" th:src="@{/logo/full.png}" alt="">
-				<form action="" method="post">
-					<div id="texttopform">
-						<h2>Agent Login</h2>
-						<p>Enter your detail to login</p>
-					</div>
-					<div class="container">
-						<div class="input-box">
-							<input type="text" placeholder="Enter Email/Phone No." name="username" required>
-						</div>
-						<div class="input-box">
-							<input type="password" placeholder="Password" name="password" required>
-						</div>
-						<button class="se-button" type="submit">Login</button>
-					</div>
-				</form>
+		<div class="container">
+			<div class="imgcontainer">
+				<img id="backgroundimg1" src="..\static\image\login-background-2.jpeg"
+					th:src="@{/image/login-background-2.png}" alt="">
+				<div class="infocontainer">
+					<img id="logo" src="..\static\logo\full.png" th:src="@{/logo/full.png}" alt="">
+					<form action="" method="post">
+						/* toggle change button */
+						<div class="button-box">
+							<div class="btn"></div>
+							<button type="button" class="toggle-btn" onclick="leftClick()">Log In</button>
+							<button type="button" class="toggle-btn" onclick="rightClick()">Sign In</button>
+
+							/* log in section */
+							<div class="login-container">
+								<div class="input-box">
+									<input type="text" placeholder="Enter Email/Phone No." name="username" required>
+								</div>
+								<div class="input-box">
+									<input type="password" placeholder="Password" name="password" required>
+								</div>
+								<button class="se-button" type="submit">Log In</button>
+							</div>
+
+							/* sign in section */
+							<div class="signin-container">
+								<div class="input-box">
+									<span class="detail">Email/Phone Number</span>
+									<input type="email_text" placeholder="Enter Your Email/Phone Number" required>
+								</div>
+
+								<div class="input-box">
+									<span class="detail">Username</span>
+									<input type="text" placeholder="Choose Your Username" required>
+								</div>
+
+								<div class="input-box">
+									<span class="detail">Password</span>
+									<input type="text" placeholder="Enter Your Password" required>
+								</div>
+
+								<div class="input-box">
+									<span class="detail">Confirm Password</span>
+									<input type="text" placeholder="Confirm Your Password" required>
+								</div>
+
+								<div class="input-box">
+									<span class="detail">First Name</span>
+									<input type="text" placeholder="Enter Your First Name" required>
+								</div>
+
+								<div class="input-box">
+									<span class="detail">Last Name</span>
+									<input type="text" placeholder="Enter Your Last Name" required>
+								</div>
+
+								<button class="se_button" type="submit">Sign In</button>
+							</div>
+					</form>
+				</div>
 			</div>
-			<img id="backgroundimg2" src="" th:src="@{/image/login-background-2.png}" alt="">
 		</div>
 	</div>
 
 	<script defer src="" th:src="@{js/login.js}"></script>
+	<script src="login.js"></script>
 </body>
 
 </html>

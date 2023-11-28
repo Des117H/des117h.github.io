@@ -7,6 +7,34 @@
     align-items: center;
 }
 
+.button-box {
+    width: 220px;
+    margin: 35px auto;
+    position: relative;
+    border-radius: 30px;
+}
+
+.toggle-btn {
+    padding: 10px 40px;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    outline: none;
+    position: relative;
+    text-align: center;
+}
+
+#btn {
+    left: 0;
+    top: 0;
+    position: absolute;
+    width: 110px;
+    height: 100%;
+    background: var(--se_primary);
+    border-radius: 30px;
+    transition: 0.5s;
+}
+
 .imgcontainer {
     display: flex;
     width: 100%;
@@ -29,18 +57,18 @@
     margin-bottom: 5px;
 }
 
-.container {
+.infocontainer {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
 }
 
-.container form {
+.infocontainer form {
     margin-bottom: 35vh;
 }
 
-.container form .container {
+.infocontainer form .container {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -49,18 +77,18 @@
     margin-bottom: 10vh;
 }
 
-form .container .input-box {
+form .infocontainer .input-box {
     margin-left: auto;
     margin-right: auto;
 }
 
-.container .input-box .container {
+.infocontainer .input-box .container {
     display: block;
     font-weight: 500;
     margin-bottom: 5px;
 }
 
-.container .input-box input {
+.infocontainer .input-box input {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -68,6 +96,10 @@ form .container .input-box {
     border: 1px solid #ccc;
     box-sizing: border-box;
     background-color: var(--white);
+}
+
+.infocontainer .signin-container {
+    display: none;
 }
 
 /* The "Forgot password" text */
