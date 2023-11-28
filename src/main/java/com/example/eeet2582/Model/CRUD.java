@@ -10,7 +10,10 @@ public class CRUD {
     private String documentId;
     private String username;
     private String password;
-    private String name;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String phoneNumber;
     private List<String> uploadedFileReferences;
 
 }

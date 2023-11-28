@@ -87,11 +87,10 @@
   transition: box-shadow .2s;
 }
 
-.button:active {
+.button:hover,.button:active {
   background-color: var(--se_primary);
   border-color: var(--theme);
   color: var(--theme);
-  transform: scale(.96);
 }
 
 .button:disabled {

@@ -40,7 +40,7 @@ public class CRUDService {
 
     public String updateCRUD(CRUD crud) throws InterruptedException, ExecutionException {
         Firestore dbFirestore = FirestoreClient.getFirestore();
-        ApiFuture<WriteResult> collectionApiFuture = dbFirestore.collection("User_account").document(crud.getName())
+        ApiFuture<WriteResult> collectionApiFuture = dbFirestore.collection("User_account").document(crud.getDocumentId())
                 .set(crud);
         return collectionApiFuture.get().getUpdateTime().toString();
     }
