@@ -1,5 +1,6 @@
 package com.example.eeet2582.Service;
 
+import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 
 import org.springframework.stereotype.Service;
@@ -16,8 +17,10 @@ import com.google.firebase.cloud.FirestoreClient;
 public class CRUDService {
 
     public String createCRUD(CRUD crud) throws ExecutionException, InterruptedException {
+        crud.setDocumentId(generateId());
+        // crud.setUploadedFileReferences(null);
         Firestore dbFirestore = FirestoreClient.getFirestore();
-        ApiFuture<WriteResult> collectionApiFuture = dbFirestore.collection("User_account").document(crud.getName())
+        ApiFuture<WriteResult> collectionApiFuture = dbFirestore.collection("User_account").document(crud.getDocumentId())
                 .set(crud);
         return collectionApiFuture.get().getUpdateTime().toString();
     }
@@ -47,5 +50,11 @@ public class CRUDService {
         ApiFuture<WriteResult> writeResult = dbFirestore.collection("User_account").document(documentId).delete();
         return "Successfully deleted " + documentId;
     }
+
+    public String generateId() {
+        UUID uuid = UUID.randomUUID();
+        return uuid.toString();
+    }
+    
 
 }

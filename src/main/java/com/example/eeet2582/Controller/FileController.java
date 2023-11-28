@@ -9,7 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.example.eeet2582.Service.FileService;
 
-@RestController
+@RestController("/document")
 public class FileController {
     public FileService fileService;
 

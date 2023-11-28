@@ -7,9 +7,10 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CRUD {
-    private String id;
+    private String documentId;
     private String username;
     private String password;
     private String name;
     private List<String> uploadedFileReferences;
+
 }

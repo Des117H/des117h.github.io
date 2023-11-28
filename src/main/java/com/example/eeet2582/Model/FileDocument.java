@@ -2,8 +2,13 @@ package com.example.eeet2582.Model;
 
 import java.time.LocalDateTime;
 
-public class FileDocument {
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
+public class FileDocument {
+    private String documentID;
     private String filename;
     private String contentType;
     private String downloadUrl;
