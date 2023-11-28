@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class CRUD {
+public class User {
     private String documentId;
     private String username;
     private String password;

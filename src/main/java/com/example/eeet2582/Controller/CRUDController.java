@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import com.example.eeet2582.Model.CRUD;
+import com.example.eeet2582.Model.User;
 import com.example.eeet2582.Service.CRUDService;
 
 @RestController
@@ -22,17 +22,17 @@ public class CRUDController {
     }
 
     @PostMapping("/create")
-    public String createCRUD(@RequestBody CRUD crud) throws InterruptedException, ExecutionException {
+    public String createCRUD(@RequestBody User crud) throws InterruptedException, ExecutionException {
         return crudService.createCRUD(crud);
     }
 
     @GetMapping("/get")
-    public CRUD getCRUD(@RequestParam String documentId) throws InterruptedException, ExecutionException {
+    public User getCRUD(@RequestParam String documentId) throws InterruptedException, ExecutionException {
         return crudService.getCRUD(documentId);
     }
 
     @PutMapping("/update")
-    public String updateCRUD(@RequestBody CRUD crud) throws InterruptedException, ExecutionException {
+    public String updateCRUD(@RequestBody User crud) throws InterruptedException, ExecutionException {
         return crudService.updateCRUD(crud);
     }
 
