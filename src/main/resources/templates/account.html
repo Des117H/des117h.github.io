@@ -12,6 +12,16 @@
 </head>
 
 <body>
+	<div class="header-div">
+		<div class="icon-container logo-div">
+			<img class="circle-logo" src="" th:src="@{/logo/circle.png}" alt="logo">
+			<img class="name-logo" src="" th:src="@{/logo/name.png}" alt="logo">
+		</div>
+		<nav class="header-navigation">
+			<a href="#" class="account-link">Account</a>
+			<a href="#" class="logout-link">Log Out</a>
+		</nav>
+	</div>
 	<div class="container light-style flex-grow-1 container-p-y">
 		<h4 class="font-weight-bold py-3 mb-4">
 			Account settings
@@ -27,6 +37,8 @@
 							href="#account-general">General</a>
 						<a class="list-group-item list-group-item-action" data-toggle="list"
 							href="#account-plan">Account Plan</a>
+						<a class="list-group-item list-group-item-action" data-toggle="list"
+							href="#current-plan">Current Plan</a>
 					</div>
 				</div>
 				<div class="col-md-9">
@@ -70,6 +82,12 @@
 							<stripe-buy-button buy-button-id="buy_btn_1OENLcHGJ8Z2uMgtlpin9EJa"
 								publishable-key="pk_test_51ODSQ5HGJ8Z2uMgt2tAjoNvjY5fYnDuVvfdyQAm9Sl5OVaZ9ZdPr82VKSZAULyPA0QW4ZqG7t9KXYLORZEuguhEe00PB6H5jPy">
 							</stripe-buy-button>
+						</div>
+						<div class="tab-pane fade" id="current-plan">
+							<ul class="price">
+								<li class="header">Basic Plan</li>
+								<li class="grey">Free</li>
+							</ul>
 						</div>
 					</div>
 				</div>
