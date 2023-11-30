@@ -1,8 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
-
 import { btnLogin} from './login.js'
-
 import {getAuth, signInWithEmailAndPassword} from 'https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js';
+import { getStorage, ref, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-storage.js";
 
 
 const firebaseConfig = {
@@ -17,8 +16,8 @@ const firebaseConfig = {
   
 const app = initializeApp(firebaseConfig);
 
+// AUTHENTICANTION
 const auth = getAuth(app);
-
 const loginUsernamePassword = async () => {
     const loginUsername = txtUsername.value + "@gmail.com";
     const loginPassword = txtPassword.value;
@@ -32,4 +31,30 @@ const loginUsernamePassword = async () => {
     }
 }
 
+ 
+// AUTHENTICANTION - functions
 btnLogin.addEventListener("click", loginUsernamePassword);
+
+// STORAGE
+const storage = getStorage();
+    getDownloadURL(ref(storage, 'images/stars.jpg'))
+    .then((url) => {
+        // `url` is the download URL for 'images/stars.jpg'
+
+        // This can be downloaded directly:
+        const xhr = new XMLHttpRequest();
+        xhr.responseType = 'blob';
+        xhr.onload = (event) => {
+        const blob = xhr.response;
+        };
+        xhr.open('GET', url);
+        xhr.send();
+
+        // Or inserted into an <img> element
+        const img = document.getElementById('myimg');
+        img.setAttribute('src', url);
+    })
+    .catch((error) => {
+        // Handle any errors
+    });
+

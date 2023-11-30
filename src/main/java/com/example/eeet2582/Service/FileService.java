@@ -49,6 +49,12 @@ public class FileService {
         return imageName;
     }
 
+    public void downloadFile(String urlString){
+        String buckString = "architecture-grandma-bea3b.appspot.com";
+        storage.get();
+        
+    }
+
     private String generateFileName(String originalFileName, String userID) {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
