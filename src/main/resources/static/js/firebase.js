@@ -1,8 +1,8 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
-import { btnLogin} from './login.js'
 import {getAuth, signInWithEmailAndPassword} from 'https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js';
 import { getStorage, ref, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-storage.js";
 
+import { btnLogin} from './login.js'
 
 const firebaseConfig = {
     apiKey: "AIzaSyCZ52ZecgR_HY-AJ5oSisUdm2SPhoYEZ40",
@@ -37,24 +37,24 @@ btnLogin.addEventListener("click", loginUsernamePassword);
 
 // STORAGE
 const storage = getStorage();
-    getDownloadURL(ref(storage, 'images/stars.jpg'))
-    .then((url) => {
-        // `url` is the download URL for 'images/stars.jpg'
+getDownloadURL(ref(storage, 'images/stars.jpg'))
+.then((url) => {
+    // `url` is the download URL for 'images/stars.jpg'
 
-        // This can be downloaded directly:
-        const xhr = new XMLHttpRequest();
-        xhr.responseType = 'blob';
-        xhr.onload = (event) => {
-        const blob = xhr.response;
-        };
-        xhr.open('GET', url);
-        xhr.send();
+    // This can be downloaded directly:
+    const xhr = new XMLHttpRequest();
+    xhr.responseType = 'blob';
+    xhr.onload = (event) => {
+    const blob = xhr.response;
+    };
+    xhr.open('GET', url);
+    xhr.send();
 
-        // Or inserted into an <img> element
-        const img = document.getElementById('myimg');
-        img.setAttribute('src', url);
-    })
-    .catch((error) => {
-        // Handle any errors
-    });
+    // Or inserted into an <img> element
+    const img = document.getElementById('myimg');
+    img.setAttribute('src', url);
+})
+.catch((error) => {
+    // Handle any errors
+});
 
