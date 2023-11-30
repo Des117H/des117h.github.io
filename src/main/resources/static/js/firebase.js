@@ -1,8 +1,9 @@
-import { initializeApp } from 'firebase/app';
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
 
-import {
+import { btnLogin} from './login.js'
 
-} from './login'
+import {getAuth, signInWithEmailAndPassword} from 'https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js';
+
 
 const firebaseConfig = {
     apiKey: "AIzaSyCZ52ZecgR_HY-AJ5oSisUdm2SPhoYEZ40",
@@ -17,3 +18,18 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
+
+const loginUsernamePassword = async () => {
+    const loginUsername = txtUsername.value + "@gmail.com";
+    const loginPassword = txtPassword.value;
+    console.log(loginUsername);
+    try{
+        const userCredetial = await signInWithEmailAndPassword(auth, loginUsername, loginPassword);
+        console.log(userCredetial.user);
+    }
+    catch(error){
+        console.log(error);
+    }
+}
+
+btnLogin.addEventListener("click", loginUsernamePassword);
