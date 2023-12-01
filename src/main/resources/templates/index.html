@@ -7,33 +7,76 @@
 	<link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
 	<link rel="stylesheet" href="../static/css/login.css" th:href="@{/css/login.css}">
 	<script src="https://kit.fontawesome.com/94b9d6322d.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
-	<div id="body">
-		<div class="imgcontainer">
-			<div class="container">
-				<img id="logo" src="..\static\logo\full.png" th:src="@{/logo/full.png}" alt="">
-				<div id="texttopform">
-					<h2>Agent Login</h2>
-					<p>Enter your detail to login</p>
+	<div class="container">
+		<input type="checkbox" id="flip">
+		<div class="cover">
+			<div class="front">
+				<img src="/src/main/resources/static/image/login-background-1.jpeg" alt="">
+				<div class="text">
+					<span class="text-1">Every new friend is a <br> new adventure</span>
+					<span class="text-2">Let's get connected</span>
 				</div>
-				<form>
-					<div class="container">
-						<div class="input-box">
-							<input id="txtUsername" type="text" placeholder="Enter Email/Phone No." name="username" required>
+			</div>
+			<div class="back">
+				<img class="backImg" src="/src/main/resources/static/image/login-background-2.jpeg" alt="">
+				<div class="text">
+					<span class="text-1">Complete miles of journey <br> with one step</span>
+					<span class="text-2">Let's get started</span>
+				</div>
+			</div>
+		</div>
+		<div class="forms">
+			<div class="form-content">
+				<div class="login-form">
+					<div class="title">Login</div>
+					<form action="#">
+						<div class="input-boxes">
+							<div class="input-box">
+								<i class="fas fa-envelope"></i>
+								<input id="txtUsername" type="text" placeholder="Enter your email" required>
+							</div>
+							<div class="input-box">
+								<i class="fas fa-lock"></i>
+								<input id="txtPassword" type="password" placeholder="Enter your password" required>
+							</div>
+							<button id="btnLogin" type="button" class="se_button">Login</button>
+							<div class="text sign-up-text">Don't have an account? <label for="flip">Sigup now</label>
+							</div>
 						</div>
-						<div class="input-box">
-							<input id="txtPassword" type="password" placeholder="Password" name="password" required>
+					</form>
+				</div>
+				<div class="signup-form">
+					<div class="title">Signup</div>
+					<form action="#">
+						<div class="input-boxes">
+							<div class="input-box">
+								<i class="fas fa-user"></i>
+								<input type="text" placeholder="Enter your name" required>
+							</div>
+							<div class="input-box">
+								<i class="fas fa-envelope"></i>
+								<input type="text" placeholder="Enter your email" required>
+							</div>
+							<div class="input-box">
+								<i class="fas fa-lock"></i>
+								<input type="password" placeholder="Enter your password" required>
+							</div>
+							<button id="btnSignUp" type="button" class="se_button">Sign Up</button>
+							<div class="text sign-up-text">Already have an account? <label for="flip">Login now</label>
+							</div>
 						</div>
-						<button id="btnLogin" type="button" class="se_button">Login</button>
-					</div>
-				</form>
+					</form>
+				</div>
 			</div>
 		</div>
 	</div>
-	<script type = "module" src="../static/js/firebase.js" th:src ="@{js/firebase.js}"></script>
-	<script type = "module" src="../static/js/login.js" th:src="@{js/login.js}"></script>
+	<script type="module" src="../static/js/firebase.js" th:src="@{js/firebase.js}"></script>
+	<script type="module" src="../static/js/login.js" th:src="@{js/login.js}"></script>
 </body>
 
 </html>
