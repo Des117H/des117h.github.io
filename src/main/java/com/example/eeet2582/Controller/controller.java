@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class controller {
 
-
      @GetMapping("/account")
     String getAccount(Model model) {
         return "account";
@@ -27,7 +26,4 @@ public class controller {
     String getIndex(Model model) {
         return "index";
     }
-
-    
-
 }

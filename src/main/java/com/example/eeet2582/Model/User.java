@@ -1,6 +1,7 @@
 package com.example.eeet2582.Model;
 
-import java.util.List;
+import java.util.HashMap;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,11 +9,10 @@ import lombok.Setter;
 @Setter
 public class User {
     private String documentId;
-    private String username;
-    private String password;
     private String firstName;
     private String lastName;
     private String email;
     private String phoneNumber;
-    private List<String> uploadedFileReferences;
+    private HashMap<String, String> docList;
+
 }
