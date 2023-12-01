@@ -37,24 +37,40 @@ btnLogin.addEventListener("click", loginUsernamePassword);
 
 // STORAGE
 const storage = getStorage();
-getDownloadURL(ref(storage, 'images/stars.jpg'))
+getDownloadURL(ref(storage, '0186e0bf-2e30-4d1d-b23b-f72bf7520fbc|1|2023-11-30_17:12:1.docx'))
 .then((url) => {
     // `url` is the download URL for 'images/stars.jpg'
-
-    // This can be downloaded directly:
-    const xhr = new XMLHttpRequest();
-    xhr.responseType = 'blob';
-    xhr.onload = (event) => {
-    const blob = xhr.response;
-    };
-    xhr.open('GET', url);
-    xhr.send();
-
-    // Or inserted into an <img> element
-    const img = document.getElementById('myimg');
-    img.setAttribute('src', url);
+    const storage = getStorage();
+    const starsRef = ref(storage, '0186e0bf-2e30-4d1d-b23b-f72bf7520fbc|1|2023-11-30_17:12:1.docx');
+    // Get the download URL
+    getDownloadURL(starsRef)
+      .then((url) => {
+        console.log(url)
+      })
+      .catch((error) => {
+        // A full list of error codes is available at
+        // https://firebase.google.com/docs/storage/web/handle-errors
+        switch (error.code) {
+          case 'storage/object-not-found':
+            // File doesn't exist
+            break;
+          case 'storage/unauthorized':
+            // User doesn't have permission to access the object
+            break;
+          case 'storage/canceled':
+            // User canceled the upload
+            break;
+    
+          // ...
+    
+          case 'storage/unknown':
+            // Unknown error occurred, inspect the server response
+            break;
+        }
+      });
 })
 .catch((error) => {
     // Handle any errors
 });
+
 

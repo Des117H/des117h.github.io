@@ -4,6 +4,7 @@ import com.google.auth.oauth2.GoogleCredentials;
 import com.google.cloud.storage.BlobId;
 import com.google.cloud.storage.BlobInfo;
 import com.google.cloud.storage.Storage;
+import com.google.cloud.storage.StorageOptions;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.core.io.ClassPathResource;
@@ -14,7 +15,6 @@ import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 
 import java.io.IOException;
-import com.google.cloud.storage.StorageOptions;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -47,12 +47,6 @@ public class FileService {
                 .build();
         storage.create(blobInfo, file.getInputStream());
         return imageName;
-    }
-
-    public void downloadFile(String urlString){
-        String buckString = "architecture-grandma-bea3b.appspot.com";
-        storage.get();
-        
     }
 
     private String generateFileName(String originalFileName, String userID) {
