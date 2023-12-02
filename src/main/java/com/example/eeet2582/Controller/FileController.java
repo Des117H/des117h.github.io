@@ -1,6 +1,7 @@
 package com.example.eeet2582.Controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.concurrent.ExecutionException;
 
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,7 +14,7 @@ import com.example.eeet2582.Service.FileService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-@RestController("/document")
+@RestController
 public class FileController {
     public FileService fileService;
 
@@ -21,8 +22,9 @@ public class FileController {
         this.fileService = fileService;
     }
 
-    @PostMapping("/upload")
-    public String uploadFile(@RequestParam(name = "file") MultipartFile file, @RequestParam(name = "user-id") String user,
+    @PostMapping("/document/upload/")
+    public String uploadFile(@RequestParam(name = "file") MultipartFile file,
+            @RequestParam(name = "user-id") String user,
             @RequestParam(name = "uploaded-at") String dateTime) {
         try {
             return fileService.saveTest(file, user, dateTime);
@@ -31,13 +33,9 @@ public class FileController {
         }
     }
 
-    @GetMapping("/get-metadata/{file-id}")
-    public FileDocument getFileUploaded(@PathVariable String fileID) {
-        try {
-            return fileService.getDocumentCRUD(fileID);
-        } catch (Exception e) {
-            return null;
-        }
+    @GetMapping("/document/get-metadata/{fileID}")
+    public FileDocument getFileUploaded(@PathVariable String fileID) throws InterruptedException, ExecutionException {
+        return fileService.getDocumentCRUD(fileID);
     }
 
 }

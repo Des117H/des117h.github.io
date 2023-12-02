@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js';
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js';
 import { getStorage, ref, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-storage.js";
 import { collection, query, where, getFirestore, getDocs } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
 import { btnLogin } from './login.js'
@@ -19,16 +19,40 @@ const db = getFirestore(app);
 
 // AUTHENTICANTION
 const auth = getAuth(app);
-const loginUsernamePassword = async () => {
-  const loginUsername = txtUsername.value + "@gmail.com";
+
+const loginEmailPassword = async () => {
+  const loginEmail = txtEmail.value;
   const loginPassword = txtPassword.value;
-  console.log(loginUsername + " + " + loginPassword);
+  console.log(loginEmail + " + " + loginPassword);
   try {
     console.log(auth);
-    const userCredetial = await signInWithEmailAndPassword(auth, loginUsername, loginPassword);
+    const userCredetial = await createUserWithEmailAndPassword(auth, loginEmail, loginPassword);
     console.log(userCredetial.user);
 
-    const q = query(collection(db, "User_account"), where("username", "==", txtUsername.value));
+    const q = query(collection(db, "User_account"), where("email", "==", loginEmail));
+
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      console.log(doc.id, " => ", doc.data());
+    });
+    // window.location.replace("http://localhost:8080/homepage");
+  }
+  catch (error) {
+    console.log(error);
+  }
+}
+
+const signUpEmailPassword = async () => {
+  const signUpEmail = emailSignUp.value;
+  const signUpPassword = passwordSignUp.value;
+  console.log(loginEmail + " + " + loginPassword);
+  try {
+    console.log(auth);
+    const userCredetial = await createUserWithEmailAndPassword(auth, signUpEmail, signUpPassword);
+    console.log(userCredetial);
+
+    const q = query(collection(db, "User_account"), where("email", "==", signUpEmail));
 
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
@@ -44,7 +68,7 @@ const loginUsernamePassword = async () => {
 
 
 // AUTHENTICANTION - functions
-btnLogin.addEventListener("click", loginUsernamePassword);
+btnLogin.addEventListener("click", loginEmailPassword);
 
 // STORAGE
 const storage = getStorage();
