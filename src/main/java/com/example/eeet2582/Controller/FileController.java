@@ -37,5 +37,4 @@ public class FileController {
     public FileDocument getFileUploaded(@PathVariable String fileID) throws InterruptedException, ExecutionException {
         return fileService.getDocumentCRUD(fileID);
     }
-
 }

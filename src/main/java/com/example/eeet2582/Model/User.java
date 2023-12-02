@@ -15,4 +15,13 @@ public class User {
     private String phoneNumber;
     private HashMap<String, String> docList;
 
+    public void initialize(String userID, String signUpEmail, String signUpFirstName, String signUpLastName, String signUpPhone)
+    {
+        this.documentId = userID;
+        this.email = signUpEmail;
+        this.firstName = signUpFirstName;
+        this.lastName = signUpLastName;
+        this.phoneNumber = signUpPhone;
+        this.docList = new HashMap<>();
+    }
 }

@@ -26,7 +26,7 @@ const loginEmailPassword = async () => {
   console.log(loginEmail + " + " + loginPassword);
   try {
     console.log(auth);
-    const userCredetial = await createUserWithEmailAndPassword(auth, loginEmail, loginPassword);
+    const userCredetial = await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
     console.log(userCredetial.user);
 
     const q = query(collection(db, "User_account"), where("email", "==", loginEmail));
@@ -46,29 +46,68 @@ const loginEmailPassword = async () => {
 const signUpEmailPassword = async () => {
   const signUpEmail = emailSignUp.value;
   const signUpPassword = passwordSignUp.value;
-  console.log(loginEmail + " + " + loginPassword);
+  const signUpFirstName = firstNameSignUp.value;
+  const signUpLastName = lastNameSignUp.value;
+  const signUpPhone = phoneSignUp.value;
+  console.log(signUpEmail + " + " + signUpPassword);
   try {
     console.log(auth);
-    const userCredetial = await createUserWithEmailAndPassword(auth, signUpEmail, signUpPassword);
-    console.log(userCredetial);
+    const userCredential = await createUserWithEmailAndPassword(auth, signUpEmail, signUpPassword);
+    console.log(userCredential.user.uid);
+    const userID = userCredential.user.uid;
 
-    const q = query(collection(db, "User_account"), where("email", "==", signUpEmail));
+    if (userID != null) {
+      const formData = appendFormData(userID, signUpEmail, signUpFirstName, signUpLastName, signUpPhone);
 
-    const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
-      console.log(doc.id, " => ", doc.data());
-    });
-    // window.location.replace("http://localhost:8080/homepage");
+      const response = await fetch("/create", {
+        method: "POST",
+        body: formData,
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          addDataToLocalStorage(userID, signUpEmail, signUpFirstName, signUpLastName, signUpPhone)
+
+          // Retrieve the object from storage
+          // var retrievedObject = localStorage.getItem('testObject');
+          // console.log('retrievedObject: ', JSON.parse(retrievedObject));
+          window.location.replace("http://localhost:8080/homepage");
+        })
+        .catch((error) => {
+          console.error('Upload failed:', error);
+        });
+
+      console.log(response);
+    }
   }
   catch (error) {
     console.log(error);
   }
 }
 
+function appendFormData(userID, signUpEmail, signUpFirstName, signUpLastName, signUpPhone) {
+  const formData = new FormData();
+  formData.append("documentId", userID);
+  formData.append("email", signUpEmail);
+  formData.append("firstName", signUpFirstName);
+  formData.append("lastName", signUpLastName);
+  formData.append("phoneNumber", signUpPhone);
+  return formData;
+}
+
+function addDataToLocalStorage(userID, signUpEmail, signUpFirstName, signUpLastName, signUpPhone) {
+  var user = {
+    "documentId": userID,
+    "email": signUpEmail,
+    "firstName": signUpFirstName,
+    "lastName": signUpLastName,
+    "phoneNumber": signUpPhone
+  };
+  localStorage.setItem('userData', JSON.stringify(user));
+}
 
 // AUTHENTICANTION - functions
 btnLogin.addEventListener("click", loginEmailPassword);
+btnSignUp.addEventListener("click", signUpEmailPassword);
 
 // STORAGE
 const storage = getStorage();
