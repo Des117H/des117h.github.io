@@ -16,14 +16,15 @@
 		<input type="checkbox" id="flip">
 		<div class="cover">
 			<div class="front">
-				<img src="/src/main/resources/static/image/login-background-1.jpeg" alt="">
+				<img src="../static/image/login-background-1.jpeg" th:src="@{/image/login-background-1.jpeg}" alt="">
 				<div class="text">
 					<span class="text-1">Every new friend is a <br> new adventure</span>
 					<span class="text-2">Let's get connected</span>
 				</div>
 			</div>
 			<div class="back">
-				<img class="backImg" src="/src/main/resources/static/image/login-background-2.jpeg" alt="">
+				<img class="backImg" src="../static/image/login-background-2.jpeg"
+					th:src="@{/image/login-background-2.jpeg}" alt="">
 				<div class="text">
 					<span class="text-1">Complete miles of journey <br> with one step</span>
 					<span class="text-2">Let's get started</span>
@@ -33,41 +34,49 @@
 		<div class="forms">
 			<div class="form-content">
 				<div class="login-form">
-					<div class="title">Login</div>
+					<div class="title">Log in</div>
 					<form action="#">
 						<div class="input-boxes">
 							<div class="input-box">
 								<i class="fas fa-envelope"></i>
-								<input id="txtUsername" type="text" placeholder="Enter your email" required>
+								<input id="txtEmail" type="text" placeholder="Enter your email" name="email" required>
 							</div>
 							<div class="input-box">
 								<i class="fas fa-lock"></i>
 								<input id="txtPassword" type="password" placeholder="Enter your password" required>
 							</div>
-							<button id="btnLogin" type="button" class="se_button">Login</button>
-							<div class="text sign-up-text">Don't have an account? <label for="flip">Sigup now</label>
+							<button id="btnLogin" type="button" class="se_button">Log in</button>
+							<div class="text sign-up-text">Don't have an account? <label for="flip">Sign up now</label>
 							</div>
 						</div>
 					</form>
 				</div>
 				<div class="signup-form">
-					<div class="title">Signup</div>
+					<div class="title">Sign up</div>
 					<form action="#">
 						<div class="input-boxes">
 							<div class="input-box">
 								<i class="fas fa-user"></i>
-								<input type="text" placeholder="Enter your name" required>
+								<input id="firstNameSignUp" type="text" placeholder="Enter your first name" required>
+							</div>
+							<div class="input-box">
+								<i class="fas fa-user"></i>
+								<input id="lastNameSignUp" type="text" placeholder="Enter your last name" required>
+							</div>
+							<div class="input-box">
+								<i class="fa fa-phone"></i>
+								<input id="phoneSignUp" type="tel" pattern="[0-9]{10}" placeholder="Enter your phone number" required>
 							</div>
 							<div class="input-box">
 								<i class="fas fa-envelope"></i>
-								<input type="text" placeholder="Enter your email" required>
+								<input id="emailSignUp" type="text" placeholder="Enter your email" required>
 							</div>
 							<div class="input-box">
 								<i class="fas fa-lock"></i>
-								<input type="password" placeholder="Enter your password" required>
+								<input id="passwordSignUp" type="password" placeholder="Enter your password" required>
 							</div>
 							<button id="btnSignUp" type="button" class="se_button">Sign Up</button>
-							<div class="text sign-up-text">Already have an account? <label for="flip">Login now</label>
+							<div class="text sign-up-text">Already have an account? <label for="flip">Log in now</label>
 							</div>
 						</div>
 					</form>

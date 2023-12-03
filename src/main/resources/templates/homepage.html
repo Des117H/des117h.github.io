@@ -22,8 +22,8 @@
 			<div>
 				Premium
 			</div>
-			<a href="/src/main/resources/templates/account.html" class="account-link">Account</a>
-			<a href="/src/main/resources/templates/index.html" class="logout-link">Log Out</a>
+			<a href="account" class="account-link">Account</a>
+			<a href="../" class="logout-link">Log Out</a>
 		</nav>
 	</div>
 
@@ -66,7 +66,7 @@
 
 		<button onclick="getDocumentsList()">test get doc metadata</button>
 
-		<div class="doc-container">
+		<div id="document-container" class="doc-container">
 			<div class="doc-box">
 				<div class="left-box">
 					<i class="fa-regular fa-file fa-xl" alt="file icon"></i>
@@ -78,21 +78,21 @@
 					<i class="fa-regular fa-trash-can fa-xl" alt="delete icon"></i>
 				</div>
 			</div>
-
-			<template doc-template>
-				<div class="doc-box">
-					<div class="left-box">
-						<i class="fa-regular fa-file fa-xl" alt="file icon"></i>
-						<p class="doc-name"></p>
-					</div>
-
-					<div class="right-box">
-						<p class="doc-date"></p>
-						<i class="fa-regular fa-trash-can fa-xl" alt="delete icon"></i>
-					</div>
-				</div>
-			</template>
 		</div>
+
+		<template id="doc-template">
+			<div class="doc-box">
+				<div class="left-box">
+					<i class="fa-regular fa-file fa-xl" alt="file icon"></i>
+					<p class="doc-name"></p>
+				</div>
+
+				<div class="right-box">
+					<p class="doc-date"></p>
+					<i class="fa-regular fa-trash-can fa-xl" alt="delete icon"></i>
+				</div>
+			</div>
+		</template>
 	</div>
 
 	<script async src="https://js.stripe.com/v3/buy-button.js"></script>

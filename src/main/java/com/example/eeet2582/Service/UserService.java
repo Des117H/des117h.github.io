@@ -19,8 +19,6 @@ import com.google.firebase.cloud.FirestoreClient;
 public class UserService {
 
     public String createUser(User user) throws ExecutionException, InterruptedException {
-        user.setDocumentId(generateId());
-        // user.setUploadedFileReferences(null);
         Firestore dbFirestore = FirestoreClient.getFirestore();
         ApiFuture<WriteResult> collectionApiFuture = dbFirestore.collection("User_account").document(user.getDocumentId())
                 .set(user);

@@ -77,36 +77,15 @@ public class FileService {
 
     
 
-    // public User getUser(String userID) throws ExecutionException,
-    // InterruptedException {
-    // Firestore dbFirestore = FirestoreClient.getFirestore();
-    // DocumentReference documentReference =
-    // dbFirestore.collection("User_account").document(userID);
-    // ApiFuture<DocumentSnapshot> future = documentReference.get();
-    // DocumentSnapshot document = future.get();
-    // User user;
-    // if (document.exists()) {
-    // user = document.toObject(User.class);
-    // return user;
-    // }
-    // return null;
-    // }
-
-    public FileDocument getDocumentCRUD(String fileID) throws IOException {
+    public FileDocument getDocumentCRUD(String fileID) throws ExecutionException, InterruptedException {
         Firestore dbFirestore = FirestoreClient.getFirestore();
         DocumentReference documentReference = dbFirestore.collection("Documents").document(fileID);
         ApiFuture<DocumentSnapshot> future = documentReference.get();
-        DocumentSnapshot document;
-        
-        try {
-            document = future.get();
-            if (document.exists()) {
-                return document.toObject(FileDocument.class);
-            }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
+        DocumentSnapshot document = future.get();
+        FileDocument fileDocument;
+        if (document.exists()) {
+            fileDocument = document.toObject(FileDocument.class);
+            return fileDocument;
         }
 
         return null;
@@ -115,7 +94,8 @@ public class FileService {
     private boolean addDocumentDataToUser(String fileName, String userID, String dateTime) {
         String documentID = generateId();
         String downloadURL = "gs://architecture-grandma-bea3b.appspot.com/" + documentID;
-        FileDocument fileDocument = new FileDocument(documentID, fileName, downloadURL, dateTime, userID);
+        FileDocument fileDocument = new FileDocument();
+        fileDocument.initialize(documentID, fileName, downloadURL, dateTime, userID);
 
         createDocument(fileDocument);
 
@@ -159,7 +139,7 @@ public class FileService {
     }
 
     private String generateFileName(String originalFileName, String userID, String dateTime) {
-        return userID + "|" + extractFileName(originalFileName) + "|" + dateTime + "."
+        return userID + "|" + extractFileName(originalFileName) + "|" + dateTime + "|."
                 + getExtension(originalFileName);
     }
 

@@ -1,4 +1,8 @@
 const form = document.getElementById('file-upload-form');
+window.onload = (event) => {
+    getDocumentsList();
+  };
+
 form.addEventListener('submit', async (event) => {
     event.preventDefault();
     // Show loading modal
@@ -22,7 +26,7 @@ form.addEventListener('submit', async (event) => {
     formData.append("user-id", user + "");
     formData.append("uploaded-at", dateTime + "");
 
-    const response = await fetch("/upload", {
+    const response = await fetch("/document/upload/", {
         method: "POST",
         body: formData,
     })
@@ -61,6 +65,8 @@ function uploadProgress(time) {
 }
 
 function getDocumentsList() {
+    document.getElementById('doc-template').innerHTML = "";
+
     fetch('/get/documentsList/' + "0186e0bf-2e30-4d1d-b23b-f72bf7520fbc", {
         method: 'GET'
     })
@@ -76,11 +82,25 @@ function getDocumentsList() {
 function getDocumentMetadata(docList) {
     for (let i = 0; i < docList.length; i++) {
         fetch("/document/get-metadata/" + docList[i], {
-            method: "GET",
+            method: "GET"
         })
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);
+                showDocument(data);
             })
     }
+}
+
+function showDocument(documentData) {
+    const nameArray = documentData.filename.split("|");
+
+    const docTemplate = document.getElementById('doc-template');
+	const docContainer = document.getElementById('document-container');
+
+	const templateClone = docTemplate.content.cloneNode(true);
+    
+	templateClone.querySelector(".doc-name").innerHTML = nameArray[1] + nameArray[3];
+	templateClone.querySelector(".doc-date").innerHTML = documentData.uploadedAt.replaceAll("-", "/").replace("_", " ");
+
+    docContainer.appendChild(templateClone);
 }
