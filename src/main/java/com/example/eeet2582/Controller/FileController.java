@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.concurrent.ExecutionException;
 
+import javax.swing.Spring;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,6 +24,8 @@ public class FileController {
         this.fileService = fileService;
     }
 
+   
+    
     @PostMapping("/document/upload/")
     public String uploadFile(@RequestParam(name = "file") MultipartFile file,
             @RequestParam(name = "user-id") String user,
@@ -36,5 +40,11 @@ public class FileController {
     @GetMapping("/document/get-metadata/{fileID}")
     public FileDocument getFileUploaded(@PathVariable String fileID) throws InterruptedException, ExecutionException {
         return fileService.getDocumentCRUD(fileID);
+    }
+
+    @GetMapping("testCode")
+    public String testStorage () throws IOException{
+        // fileService.extractTextFromDocx("null");
+        return  fileService.extractTextFromDocx("null");
     }
 }

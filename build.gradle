@@ -34,7 +34,7 @@ dependencies {
 	// firebase
 	implementation 'com.google.firebase:firebase-admin:9.2.0'
 	//Apache poi
-	implementation 'org.apache.poi:poi:5.2.5'
+	implementation 'org.apache.poi:poi-ooxml:5.2.5'
 
 	
 	implementation 'org.slf4j:slf4j-simple:1.7.32'

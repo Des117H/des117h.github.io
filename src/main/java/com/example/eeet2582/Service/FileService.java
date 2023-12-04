@@ -4,6 +4,7 @@ import com.example.eeet2582.Model.FileDocument;
 import com.example.eeet2582.Model.User;
 import com.google.api.core.ApiFuture;
 import com.google.auth.oauth2.GoogleCredentials;
+import com.google.cloud.ReadChannel;
 import com.google.cloud.firestore.DocumentReference;
 import com.google.cloud.firestore.DocumentSnapshot;
 import com.google.cloud.firestore.Firestore;
@@ -14,10 +15,9 @@ import com.google.cloud.storage.BlobInfo;
 import com.google.cloud.storage.Storage;
 import com.google.cloud.storage.StorageOptions;
 
-import org.apache.poi.extractor.ExtractorFactory;
-import org.apache.poi.extractor.POIOLE2TextExtractor;
-import org.apache.poi.extractor.POITextExtractor;
-import org.apache.poi.poifs.filesystem.POIFSFileSystem;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.apache.poi.openxml4j.opc.OPCPackage;
+import org.apache.poi.xwpf.extractor.XWPFWordExtractor;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.core.io.ClassPathResource;
@@ -25,15 +25,18 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.ByteBuffer;
+import java.nio.charset.StandardCharsets;
 import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 
 import com.google.firebase.cloud.FirestoreClient;
 import com.google.firebase.cloud.StorageClient;
-
+import com.google.firebase.database.core.Path;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -158,41 +161,20 @@ public class FileService {
 
     public String extractTextFromDocx(String fileReferencePath) throws IOException {
         // Storage storage = StorageOptions.newBuilder();
-        fileReferencePath = "0186e0bf-2e30-4d1d-b23b-f72bf7520fbc|1|2023-12-1_17:40:48|.docx";
+        fileReferencePath = "0186e0bf-2e30-4d1d-b23b-f72bf7520fbc|egestas dui|2023-12-4_13:0:31|.docx";
         Blob blob = storage.get("architecture-grandma-bea3b.appspot.com", fileReferencePath);
-        System.out.println(blob);
-        // InputStream inputStream = blob.reader();
-        // XWPFDocument document = new XWPFDocument(inputStream);
-        // XWPFWordExtractor extractor = new XWPFWordExtractor(document);
-        // String textContent = extractor.getText();
-        // extractor.close();
-        // document.close();
-        // return textContent;
-        return "run";
+        File tempFile = new File("/tmp/downloaded_file.docx");
+        java.nio.file.Path tempFilePath = tempFile.toPath();
+        blob.downloadTo(tempFilePath);
+        try {
+            InputStream inputStream = new FileInputStream(tempFile);
+            XWPFDocument document = new XWPFDocument(inputStream);
+            XWPFWordExtractor extractor = new XWPFWordExtractor(document);
+            String text = extractor.getText();
+            extractor.close();
+            return text;
+        } finally {
+            tempFile.deleteOnExit(); // Clean up temporary file
+        }
     }
-
-    // public  void textProcess(){
-    //     String inputFile;
-    //     FileInputStream fis = new FileInputStream(inputFile);
-    //     POIFSFileSystem fileSystem = new POIFSFileSystem(fis);
-    //     // Firstly, get an extractor for the Workbook
-    //     POIOLE2TextExtractor oleTextExtractor = ExtractorFactory.createExtractor(fileSystem);
-    //     // Then a List of extractors for any embedded Excel, Word, PowerPoint
-    //     // or Visio objects embedded into it.
-    //     POITextExtractor[] embeddedExtractors =
-    //     ExtractorFactory.getEmbededDocsTextExtractors(oleTextExtractor);
-    //     for (POITextExtractor textExtractor : embeddedExtractors) {
-    //     // If the embedded object was an Excel spreadsheet.
-    //     if (textExtractor instanceof WordExtractor) {
-    //         WordExtractor wordExtractor = (WordExtractor) textExtractor;
-    //         String[] paragraphText = wordExtractor.getParagraphText();
-    //         for (String paragraph : paragraphText) {
-    //             System.out.println(paragraph);
-    //         }
-    //         // Display the document's header and footer text
-    //         System.out.println("Footer text: " + wordExtractor.getFooterText());
-    //         System.out.println("Header text: " + wordExtractor.getHeaderText());
-    //         }
-    //     }
-    // }
 }
