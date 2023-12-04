@@ -36,16 +36,23 @@ body {
     border: 5px solid white;
 }
 
+#account-plan {}
+
+.premium {
+    margin-left: 10%;
+
+}
 
 .price {
+
     list-style-type: none;
     border: 1px solid #eee;
-    margin-left: 20%;
-    margin-right: 20%;
-    margin-top: 15px;
+    width: 264px;
     padding: 0;
     -webkit-transition: 0.3s;
     transition: 0.3s;
+    float: right;
+    margin-right: 10%;
 }
 
 
@@ -71,4 +78,8 @@ body {
 .price .grey {
     background-color: #eee;
     font-size: 20px;
+}
+
+#button-div {
+    margin-top: 25px;
 }
