@@ -38,13 +38,14 @@ public class FileController {
     }
 
     @GetMapping("/document/get-metadata/{fileID}")
-    public FileDocument getFileUploaded(@PathVariable String fileID) throws InterruptedException, ExecutionException {
-        return fileService.getDocumentCRUD(fileID);
+    public String getFileUploaded(@PathVariable String fileID) throws InterruptedException, ExecutionException, IOException {
+        String fileName = fileService.getDocumentCRUD(fileID).getFilename();
+        return fileService.extractTextFromDocx(fileName);
     }
 
-    @GetMapping("testCode")
-    public String testStorage () throws IOException{
-        // fileService.extractTextFromDocx("null");
-        return  fileService.extractTextFromDocx("null");
-    }
+    // @GetMapping("testCode")
+    // public String testStorage () throws IOException{
+    //     // fileService.extractTextFromDocx("null");
+    //     return  fileService.extractTextFromDocx("null");
+    // }
 }

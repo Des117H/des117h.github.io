@@ -160,8 +160,6 @@ public class FileService {
     }
 
     public String extractTextFromDocx(String fileReferencePath) throws IOException {
-        // Storage storage = StorageOptions.newBuilder();
-        fileReferencePath = "0186e0bf-2e30-4d1d-b23b-f72bf7520fbc|egestas dui|2023-12-4_13:0:31|.docx";
         Blob blob = storage.get("architecture-grandma-bea3b.appspot.com", fileReferencePath);
         File tempFile = new File("/tmp/downloaded_file.docx");
         java.nio.file.Path tempFilePath = tempFile.toPath();
