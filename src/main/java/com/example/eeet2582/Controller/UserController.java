@@ -23,11 +23,11 @@ public class UserController {
     }
 
     @PostMapping("/create")
-    public String createUser( @RequestParam(name = "documentId") String  userID,
-    @RequestParam(name = "email")String  signUpEmail,
-    @RequestParam(name = "firstName")String  signUpFirstName,
-    @RequestParam(name = "lastName")String  signUpLastName,
-    @RequestParam(name = "phoneNumber")String  signUpPhone) throws InterruptedException, ExecutionException {
+    public String createUser(@RequestParam(name = "documentId") String userID,
+            @RequestParam(name = "email") String signUpEmail,
+            @RequestParam(name = "firstName") String signUpFirstName,
+            @RequestParam(name = "lastName") String signUpLastName,
+            @RequestParam(name = "phoneNumber") String signUpPhone) throws InterruptedException, ExecutionException {
         User user = new User();
         user.initialize(userID, signUpEmail, signUpFirstName, signUpLastName, signUpPhone);
         return userService.createUser(user);
@@ -44,7 +44,8 @@ public class UserController {
     }
 
     @GetMapping("/get/documentsList/{userID}")
-    public HashMap<String, String> getDocuments(@PathVariable String userID) throws InterruptedException, ExecutionException {
+    public HashMap<String, String> getDocuments(@PathVariable String userID)
+            throws InterruptedException, ExecutionException {
         return userService.getDocumentsList(userID);
     }
 

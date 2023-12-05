@@ -4,7 +4,6 @@ import com.example.eeet2582.Model.FileDocument;
 import com.example.eeet2582.Model.User;
 import com.google.api.core.ApiFuture;
 import com.google.auth.oauth2.GoogleCredentials;
-import com.google.cloud.ReadChannel;
 import com.google.cloud.firestore.DocumentReference;
 import com.google.cloud.firestore.DocumentSnapshot;
 import com.google.cloud.firestore.Firestore;
@@ -16,7 +15,6 @@ import com.google.cloud.storage.Storage;
 import com.google.cloud.storage.StorageOptions;
 
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
-import org.apache.poi.openxml4j.opc.OPCPackage;
 import org.apache.poi.xwpf.extractor.XWPFWordExtractor;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
@@ -29,15 +27,10 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.ByteBuffer;
-import java.nio.charset.StandardCharsets;
 import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 
 import com.google.firebase.cloud.FirestoreClient;
-import com.google.firebase.cloud.StorageClient;
-import com.google.firebase.database.core.Path;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -77,8 +70,6 @@ public class FileService {
         else
             return null;
     }
-
-    
 
     public FileDocument getDocumentCRUD(String fileID) throws ExecutionException, InterruptedException {
         Firestore dbFirestore = FirestoreClient.getFirestore();

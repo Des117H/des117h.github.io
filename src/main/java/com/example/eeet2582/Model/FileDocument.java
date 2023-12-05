@@ -13,21 +13,6 @@ public class FileDocument {
     private String userId;
 
     // Getters and setters for file metadata attributes
-    // public FileDocument () {
-    //     this.documentID = "";
-    //     this.filename = "";
-    //     this.downloadUrl = "";
-    //     this.uploadedAt = "";
-    //     this.userId = "";
-    // }
-    // public FileDocument(String documentID, String filename, String downloadUrl, String uploadedAt, String userId) {
-    //     this.documentID = documentID;
-    //     this.filename = filename;
-    //     this.downloadUrl = downloadUrl;
-    //     this.uploadedAt = uploadedAt;
-    //     this.userId = userId;
-    // }
-
     public void initialize(String documentID, String filename, String downloadUrl, String uploadedAt, String userId) {
         this.documentID = documentID;
         this.filename = filename;
@@ -44,5 +29,5 @@ public class FileDocument {
                 ", uploadedAt=" + uploadedAt +
                 ", userId=" + userId +
                 '}';
-}
+    }
 }

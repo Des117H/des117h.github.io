@@ -1,14 +1,15 @@
 const form = document.getElementById('file-upload-form');
+var userData;
 window.onload = (event) => {
-    getDocumentsList();
-  };
+    userData = localStorage.getItem('userData');
+    getDocumentsList(userData.documentId);
+};
 
 form.addEventListener('submit', async (event) => {
     event.preventDefault();
     // Show loading modal
     $('#loading-modal').modal('show');
     const file = document.getElementById('file-input').files[0];
-    const user = document.getElementById('user-id').value;
     if (!file) {
         return;
     }
@@ -23,8 +24,8 @@ form.addEventListener('submit', async (event) => {
 
     const formData = new FormData();
     formData.append("file", file);
-    formData.append("user-id", user + "");
-    formData.append("uploaded-at", dateTime + "");
+    formData.append("user-id", userData.documentId);
+    formData.append("uploaded-at", dateTime);
 
     const response = await fetch("/document/upload/", {
         method: "POST",
@@ -64,10 +65,10 @@ function uploadProgress(time) {
     // getDocumentsList("0186e0bf-2e30-4d1d-b23b-f72bf7520fbc");
 }
 
-function getDocumentsList() {
+function getDocumentsList(documentId) {
     document.getElementById('doc-template').innerHTML = "";
 
-    fetch('/get/documentsList/' + "0186e0bf-2e30-4d1d-b23b-f72bf7520fbc", {
+    fetch('/get/documentsList/' + documentId, {
         method: 'GET'
     })
         .then((response) => response.json())
@@ -95,12 +96,12 @@ function showDocument(documentData) {
     const nameArray = documentData.filename.split("|");
 
     const docTemplate = document.getElementById('doc-template');
-	const docContainer = document.getElementById('document-container');
+    const docContainer = document.getElementById('document-container');
 
-	const templateClone = docTemplate.content.cloneNode(true);
-    
-	templateClone.querySelector(".doc-name").innerHTML = nameArray[1] + nameArray[3];
-	templateClone.querySelector(".doc-date").innerHTML = documentData.uploadedAt.replaceAll("-", "/").replace("_", " ");
+    const templateClone = docTemplate.content.cloneNode(true);
+
+    templateClone.querySelector(".doc-name").innerHTML = nameArray[1] + nameArray[3];
+    templateClone.querySelector(".doc-date").innerHTML = documentData.uploadedAt.replaceAll("-", "/").replace("_", " ");
 
     docContainer.appendChild(templateClone);
 }
