@@ -1,17 +1,13 @@
 package com.example.eeet2582.Controller;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.concurrent.ExecutionException;
-
-import javax.swing.Spring;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.example.eeet2582.Model.FileDocument;
 import com.example.eeet2582.Service.FileService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,8 +20,6 @@ public class FileController {
         this.fileService = fileService;
     }
 
-   
-    
     @PostMapping("/document/upload/")
     public String uploadFile(@RequestParam(name = "file") MultipartFile file,
             @RequestParam(name = "user-id") String user,
@@ -38,14 +32,15 @@ public class FileController {
     }
 
     @GetMapping("/document/get-metadata/{fileID}")
-    public String getFileUploaded(@PathVariable String fileID) throws InterruptedException, ExecutionException, IOException {
+    public String getFileUploaded(@PathVariable String fileID)
+            throws InterruptedException, ExecutionException, IOException {
         String fileName = fileService.getDocumentCRUD(fileID).getFilename();
         return fileService.extractTextFromDocx(fileName);
     }
 
     // @GetMapping("testCode")
     // public String testStorage () throws IOException{
-    //     // fileService.extractTextFromDocx("null");
-    //     return  fileService.extractTextFromDocx("null");
+    // // fileService.extractTextFromDocx("null");
+    // return fileService.extractTextFromDocx("null");
     // }
 }

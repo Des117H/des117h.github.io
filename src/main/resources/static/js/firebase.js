@@ -17,7 +17,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// AUTHENTICANTION
+// AUTHENTICATION
 const auth = getAuth(app);
 
 const loginEmailPassword = async () => {
@@ -25,18 +25,22 @@ const loginEmailPassword = async () => {
   const loginPassword = txtPassword.value;
   console.log(loginEmail + " + " + loginPassword);
   try {
-    console.log(auth);
-    const userCredetial = await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
-    console.log(userCredetial.user);
+    const userCredential = await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
+    const userID = userCredential.user.uid;
 
-    const q = query(collection(db, "User_account"), where("email", "==", loginEmail));
+    const q = query(collection(db, "User_account"), where("documentId", "==", userID));
 
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
-      console.log(doc.id, " => ", doc.data());
+      let userData = doc.data();
+      const signUpEmail = userData.email;
+      const signUpFirstName = userData.firstName;
+      const signUpLastName = userData.lastName;
+      const signUpPhone = userData.phone;
+      
+      addDataToLocalStorage(userID, signUpEmail, signUpFirstName, signUpLastName, signUpPhone)
+      window.location.replace("http://localhost:8080/homepage");
     });
-    // window.location.replace("http://localhost:8080/homepage");
   }
   catch (error) {
     console.log(error);

@@ -20,7 +20,8 @@ public class UserService {
 
     public String createUser(User user) throws ExecutionException, InterruptedException {
         Firestore dbFirestore = FirestoreClient.getFirestore();
-        ApiFuture<WriteResult> collectionApiFuture = dbFirestore.collection("User_account").document(user.getDocumentId())
+        ApiFuture<WriteResult> collectionApiFuture = dbFirestore.collection("User_account")
+                .document(user.getDocumentId())
                 .set(user);
         return collectionApiFuture.get().getUpdateTime().toString();
     }
@@ -40,7 +41,8 @@ public class UserService {
 
     public String updateUser(User user) throws InterruptedException, ExecutionException {
         Firestore dbFirestore = FirestoreClient.getFirestore();
-        ApiFuture<WriteResult> collectionApiFuture = dbFirestore.collection("User_account").document(user.getDocumentId())
+        ApiFuture<WriteResult> collectionApiFuture = dbFirestore.collection("User_account")
+                .document(user.getDocumentId())
                 .set(user);
         return collectionApiFuture.get().getUpdateTime().toString();
     }
