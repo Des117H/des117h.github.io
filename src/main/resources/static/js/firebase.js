@@ -2,7 +2,8 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebas
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js';
 import { getStorage, ref, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-storage.js";
 import { collection, query, where, getFirestore, getDocs } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
-import { btnLogin } from './login.js'
+import { btnLogin, btnSignUp } from './login.js'
+import { btnSave } from "./edit2.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCZ52ZecgR_HY-AJ5oSisUdm2SPhoYEZ40",
@@ -110,6 +111,7 @@ function addDataToLocalStorage(userID, signUpEmail, signUpFirstName, signUpLastN
 }
 
 // AUTHENTICANTION - functions
+
 btnLogin.addEventListener("click", loginEmailPassword);
 btnSignUp.addEventListener("click", signUpEmailPassword);
 
@@ -151,4 +153,31 @@ getDownloadURL(ref(storage, '0186e0bf-2e30-4d1d-b23b-f72bf7520fbc|1|2023-11-30_1
     // Handle any errors
   });
 
+// Update and save the file edited
+function saveToFirebase() {
+  // Get the content from the Quill editor
+  console.log("function co chay");
+  const editorContent = quill.root.innerHTML;
 
+  console.log(editorContent);
+
+  // Create a Blob from the content
+  const blob = new Blob([editorContent], { type: 'text/html' });
+
+  // Generate a unique file name or use your own logic
+  const fileName = fileID;
+
+  // Reference to the Firebase Storage root
+  const storageRef = firebase.storage().ref();
+
+  // Reference to the file in Firebase Storage
+  const fileRef = storageRef.child(fileName);
+
+  // Upload the file to Firebase Storage
+  fileRef.put(blob).then((snapshot) => {
+      console.log(snapshot);
+      console.log('File uploaded successfully!');
+  }).catch((error) => {
+    console.error('Error uploading file:', error);
+  });
+}

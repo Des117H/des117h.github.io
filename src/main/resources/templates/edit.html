@@ -26,13 +26,26 @@
 		</nav>
 	</div>
 	<div class="body">
-	
+		<div class="save_button">
+			<button class="button" id="saveBtn">Save</button>
+		</div>
+
 		<div id="editor">
 			text will go here
 		</div>
+
+		<div id="customForm">
+			<textarea id="customTextArea" placeholder="Enter text"></textarea>
+			<button onclick="submitText()">Submit</button>
+		</div>
+
+		<div id="result"></div>
+		
 	</div>
 	<!-- <script src="https://cdn.jsdelivr.net/npm/quill-image-resize-module@3.0.0/image-resize.min.js" th:src="https://cdn.jsdelivr.net/npm/quill-image-resize-module@3.0.0/image-resize.min.js"></script> -->
 	<script src="https://cdn.quilljs.com/1.3.6/quill.js" th:src="@{https://cdn.quilljs.com/1.3.6/quill.js}"></script>
-	<script type="module" src="../static/js/edit.js" th:src="@{js/edit.js}"></script>
+	<script type="module" src="../static/js/edit2.js" th:src="@{js/edit2.js}"></script>
+	<script type="module" src="../static/js/firebase2.js" th:src="@{js/firebase2.js}"></script>
+	<script src="../static/js/edit.js" th:src="@{js/edit.js}"></script>
 	
 </html>

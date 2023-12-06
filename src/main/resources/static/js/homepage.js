@@ -62,7 +62,7 @@ function uploadProgress(time) {
         progressBar.css('width', `${progress}%`);
     }, time); // Change interval to 1000 for 1-second updates
 
-    // getDocumentsList("0186e0bf-2e30-4d1d-b23b-f72bf7520fbc");
+    getDocumentsList(userData.documentId);
 }
 
 function getDocumentsList(documentId) {
