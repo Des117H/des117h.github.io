@@ -12,7 +12,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--theme);
+    background: var(--white);
     padding: 30px;
 }
 
@@ -179,6 +179,12 @@ body {
     font-size: 17px;
 }
 
+.form-content .input-box img {
+    width: 35px;
+    cursor: pointer;
+    display: flex;
+}
+
 .forms .form-content .text {
     font-size: 14px;
     font-weight: 500;
@@ -208,6 +214,7 @@ body {
     text-align: center;
     margin-top: 25px;
 }
+
 
 .container #flip {
     display: none;

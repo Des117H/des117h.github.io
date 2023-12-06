@@ -1,7 +1,11 @@
 const form = document.getElementById('file-upload-form');
+
+const docContainer = document.getElementById('document-container');
+const docTemplate = document.getElementById('doc-template');
+
 var userData;
 window.onload = (event) => {
-    userData = localStorage.getItem('userData');
+    userData = JSON.parse(localStorage.getItem('userData'));
     getDocumentsList(userData.documentId);
 };
 
@@ -94,14 +98,17 @@ function getDocumentMetadata(docList) {
 
 function showDocument(documentData) {
     const nameArray = documentData.filename.split("|");
-
-    const docTemplate = document.getElementById('doc-template');
-    const docContainer = document.getElementById('document-container');
+    docContainer.innerHTML = "";
 
     const templateClone = docTemplate.content.cloneNode(true);
+    console.log(templateClone);
 
-    templateClone.querySelector(".doc-name").innerHTML = nameArray[1] + nameArray[3];
-    templateClone.querySelector(".doc-date").innerHTML = documentData.uploadedAt.replaceAll("-", "/").replace("_", " ");
+    var docName = templateClone.querySelector("doc-name");
+    var docDate = templateClone.querySelector("doc-date");
+
+
+    docName.innerHTML = nameArray[1] + nameArray[3];
+    docDate.innerHTML = documentData.uploadedAt.replaceAll("-", "/").replace("_", " ");
 
     docContainer.appendChild(templateClone);
 }

@@ -13,8 +13,8 @@ let quill = new Quill("#editor",{
 })
 
 
-let fileID = "02ab6313-857c-4a5f-a4b4-b3c842eced48";
-fetch('/document/get-metadata/' + fileID)
+let fileID = "561f885c-d794-4985-b04d-b549eb993758";
+fetch('/document/contents/' + fileID)
   .then(response => response.text())
   .then(data => {
     quill.setText(data);

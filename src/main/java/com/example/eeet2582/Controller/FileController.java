@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.example.eeet2582.Model.FileDocument;
 import com.example.eeet2582.Service.FileService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,15 +33,27 @@ public class FileController {
     }
 
     @GetMapping("/document/get-metadata/{fileID}")
-    public String getFileUploaded(@PathVariable String fileID)
-            throws InterruptedException, ExecutionException, IOException {
-        String fileName = fileService.getDocumentCRUD(fileID).getFilename();
-        return fileService.extractTextFromDocx(fileName);
+    public FileDocument getFileUploaded(@PathVariable String fileID) {
+        try {
+            return fileService.getDocumentCRUD(fileID);
+        } catch (ExecutionException | InterruptedException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
-    // @GetMapping("testCode")
-    // public String testStorage () throws IOException{
-    // // fileService.extractTextFromDocx("null");
-    // return fileService.extractTextFromDocx("null");
-    // }
+    @GetMapping("document/contents/{fileID}")
+    public String getFileContent(@PathVariable String fileID) {
+        String fileName;
+        try {
+            fileName = fileService.getDocumentCRUD(fileID).getFilename();
+            return fileService.extractTextFromDocx(fileName);
+        } catch (ExecutionException | InterruptedException e) {
+            e.printStackTrace();
+            return null;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }
