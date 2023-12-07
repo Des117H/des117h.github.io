@@ -87,7 +87,8 @@
   transition: box-shadow .2s;
 }
 
-.button:hover,.button:active {
+.button:hover,
+.button:active {
   background-color: var(--se_primary);
   border-color: var(--theme);
   color: var(--theme);
@@ -164,4 +165,72 @@
 .header-navigation a:hover {
   color: var(--theme);
   background-color: var(--se_primary);
+}
+
+/* Footer */
+.footer-div {
+  margin-top: 100px;
+  /*width: 100%;
+  padding: 4rem 0 1rem 0;*/
+  background: var(--theme);
+  color: var(--primary);
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  /*margin: 0 auto;*/
+}
+
+.footer-div div {
+  display: flex;
+  flex-direction: column;
+  margin-right: 10rem;
+}
+
+.footer-div div h3 {
+  font-weight: 300;
+  margin-bottom: 30px;
+  letter-spacing: 1px;
+}
+
+.footer-div div a {
+  display: block;
+  text-decoration: none;
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+
+.footer-div div a:hover {
+  color: var(--se_primary);
+}
+
+.footer-div div label {
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+
+.footer-div col-4 h3 {
+  margin-bottom: 2rem;
+}
+
+#footer-email {
+  width: 250px;
+  height: 40px;
+  border-radius: 4px;
+  outline: var(--primary);
+  border-color: var(--primary);
+}
+
+#footer-email::placeholder {
+  color: #b1b1b1;
+}
+
+#footer-email-btn {
+  width: 100px;
+  height: 40px;
+  border-radius: 4px;
+  background-color: var(--se_primary);
+  outline: none;
+  border: none;
+  color: var(--white);
+  font-size: 1.8rem;
 }

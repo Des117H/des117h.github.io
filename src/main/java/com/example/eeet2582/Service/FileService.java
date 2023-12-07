@@ -14,8 +14,8 @@ import com.google.cloud.storage.BlobInfo;
 import com.google.cloud.storage.Storage;
 import com.google.cloud.storage.StorageOptions;
 
-import org.apache.poi.xwpf.usermodel.XWPFDocument;
-import org.apache.poi.xwpf.extractor.XWPFWordExtractor;
+//import org.apache.poi.xwpf.usermodel.XWPFDocument;
+//import org.apache.poi.xwpf.extractor.XWPFWordExtractor;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.core.io.ClassPathResource;
@@ -81,6 +81,7 @@ public class FileService {
             fileDocument = document.toObject(FileDocument.class);
             return fileDocument;
         }
+
         return null;
     }
 
@@ -149,20 +150,24 @@ public class FileService {
         return uuid.toString();
     }
 
-    public String extractTextFromDocx(String fileReferencePath) throws IOException {
-        Blob blob = storage.get("architecture-grandma-bea3b.appspot.com", fileReferencePath);
-        File tempFile = new File("/tmp/downloaded_file.docx");
-        java.nio.file.Path tempFilePath = tempFile.toPath();
-        blob.downloadTo(tempFilePath);
-        try {
-            InputStream inputStream = new FileInputStream(tempFile);
-            XWPFDocument document = new XWPFDocument(inputStream);
-            XWPFWordExtractor extractor = new XWPFWordExtractor(document);
-            String text = extractor.getText();
-            extractor.close();
-            return text;
-        } finally {
-            tempFile.deleteOnExit(); // Clean up temporary file
-        }
-    }
+    /*
+     * public String extractTextFromDocx(String fileReferencePath) throws
+     * IOException {
+     * Blob blob = storage.get("architecture-grandma-bea3b.appspot.com",
+     * fileReferencePath);
+     * File tempFile = new File("/tmp/downloaded_file.docx");
+     * java.nio.file.Path tempFilePath = tempFile.toPath();
+     * blob.downloadTo(tempFilePath);
+     * try {
+     * InputStream inputStream = new FileInputStream(tempFile);
+     * XWPFDocument document = new XWPFDocument(inputStream);
+     * XWPFWordExtractor extractor = new XWPFWordExtractor(document)
+     * String text = extractor.getText();
+     * extractor.close();
+     * return text;
+     * } finally {
+     * tempFile.deleteOnExit(); // Clean up temporary file
+     * }
+     * }
+     */
 }
