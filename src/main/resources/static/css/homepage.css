@@ -73,3 +73,10 @@
 	height: 5vh;
 	width: 10vh;
 }
+
+.footer-div {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	left: 0;
+}
