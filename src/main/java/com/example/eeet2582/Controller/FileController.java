@@ -42,18 +42,20 @@ public class FileController {
         }
     }
 
-    @GetMapping("document/contents/{fileID}")
-    public String getFileContent(@PathVariable String fileID) {
-        String fileName;
-        try {
-            fileName = fileService.getDocumentCRUD(fileID).getFilename();
-            return fileService.extractTextFromDocx(fileName);
-        } catch (ExecutionException | InterruptedException e) {
-            e.printStackTrace();
-            return null;
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
+    // @GetMapping("document/contents/{fileID}")
+    /*
+     * public String getFileContent(@PathVariable String fileID) {
+     * String fileName;
+     * try {
+     * fileName = fileService.getDocumentCRUD(fileID).getFilename();
+     * return fileService.extractTextFromDocx(fileName);
+     * } catch (ExecutionException | InterruptedException e) {
+     * e.printStackTrace();
+     * return null;
+     * } catch (IOException e) {
+     * e.printStackTrace();
+     * return null;
+     * }
+     * }
+     */
 }
