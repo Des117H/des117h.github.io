@@ -1,5 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
 import { collection, query, where, getFirestore, getDocs } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
+import { getStorage, ref, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-storage.js";
 import { btnSave } from "./edit2.js";
 
 const firebaseConfig = {
@@ -14,6 +15,8 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+
+const storage = getStorage();
 
 // AUTHENTICATION
 btnSave.addEventListener("click",saveToFirebase);
@@ -32,7 +35,7 @@ function saveToFirebase() {
     const fileName = fileID;
   
     // Reference to the Firebase Storage root
-    const storageRef = app.storageRef();
+    const storageRef = storage.storageRef();
   
     // Reference to the file in Firebase Storage
     const fileRef = storageRef.child(fileName);

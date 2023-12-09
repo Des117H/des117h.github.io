@@ -1,51 +1,57 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<meta charset="utf-8">
-	<title>Edit document</title>
-	<link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
-	<link rel="stylesheet" href="../static/css/edit.css" th:href="@{/css/edit.css}">
-	<link rel="stylesheet" href="https://cdn.quilljs.com/1.3.6/quill.snow.css" th:href = @{https://cdn.quilljs.com/1.3.6/quill.snow.css}>
-	<link rel="stylesheet" href="https://cdn.quilljs.com/1.3.6/quill.core.css" th:href="@{https://cdn.quilljs.com/1.3.6/quill.core.css}">
-	<script src="https://kit.fontawesome.com/94b9d6322d.js" crossorigin="anonymous"></script>
+    <meta charset="utf-8">
+    <title>Edit document</title>
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" href="../static/css/edit.css" th:href="@{/css/edit.css}">
+    <link rel="stylesheet" href="https://cdn.quilljs.com/1.3.6/quill.snow.css" th:href="@{https://cdn.quilljs.com/1.3.6/quill.snow.css}">
+    <link rel="stylesheet" href="https://cdn.quilljs.com/1.3.6/quill.core.css" th:href="@{https://cdn.quilljs.com/1.3.6/quill.core.css}">
+    <script src="https://kit.fontawesome.com/94b9d6322d.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-	<div class="header-div">
-		<div class="icon-container logo-div">
-			<img class="circle-logo" src="../static/logo/circle.png" th:src="@{/logo/circle.png}" alt="logo">
-			<img class="name-logo" src="../static/logo/name.png" th:src="@{/logo/name.png}" alt="logo">
-		</div>
-		<nav class="header-navigation">
-			<div>
-				Premium
+    <div class="header-div">
+        <div class="icon-container logo-div">
+            <img class="circle-logo" src="../static/logo/circle.png" th:src="@{/logo/circle.png}" alt="logo">
+            <img class="name-logo" src="../static/logo/name.png" th:src="@{/logo/name.png}" alt="logo">
+        </div>
+        <nav class="header-navigation">
+            <div>
+                Premium
+            </div>
+            <a href="account" class="account-link">Account</a>
+            <a href="../" class="logout-link">Log Out</a>
+        </nav>
+    </div>
+    <div class="body">
+        <div class="editor-form-container">
+            <div class="editor-container">
+				<h2 class="file-name">Your File Name</h2>
+				<div id="editor">
+					text will go here
+				</div>
+				<div class="save-button-container">
+					<button class="button" id="saveBtn">Save</button>
+				</div>
+				
 			</div>
-			<a href="account" class="account-link">Account</a>
-			<a href="../" class="logout-link">Log Out</a>
-		</nav>
-	</div>
-	<div class="body">
-		<div class="save_button">
-			<button class="button" id="saveBtn">Save</button>
-		</div>
+            <div class="form-container">
+                <div id="customForm">
+					<h3>Check your gammar</h3>
+                    <textarea id="customTextArea" placeholder="Enter text"></textarea>
+                    <button class="se_button" onclick="submitText()">Submit</button>
+                </div>
+            </div>
+        </div>
 
-		<div id="editor">
-			text will go here
-		</div>
+        <div id="result"></div>
+    </div>
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js" th:src="@{https://cdn.quilljs.com/1.3.6/quill.js}"></script>
+    <script type="module" src="../static/js/edit2.js" th:src="@{js/edit2.js}"></script>
+    <script type="module" src="../static/js/firebase2.js" th:src="@{js/firebase2.js}"></script>
+    <script src="../static/js/edit.js" th:src="@{js/edit.js}"></script>
+</body>
 
-		<div id="customForm">
-			<textarea id="customTextArea" placeholder="Enter text"></textarea>
-			<button onclick="submitText()">Submit</button>
-		</div>
-
-		<div id="result"></div>
-		
-	</div>
-	<!-- <script src="https://cdn.jsdelivr.net/npm/quill-image-resize-module@3.0.0/image-resize.min.js" th:src="https://cdn.jsdelivr.net/npm/quill-image-resize-module@3.0.0/image-resize.min.js"></script> -->
-	<script src="https://cdn.quilljs.com/1.3.6/quill.js" th:src="@{https://cdn.quilljs.com/1.3.6/quill.js}"></script>
-	<script type="module" src="../static/js/edit2.js" th:src="@{js/edit2.js}"></script>
-	<script type="module" src="../static/js/firebase2.js" th:src="@{js/firebase2.js}"></script>
-	<script src="../static/js/edit.js" th:src="@{js/edit.js}"></script>
-	
 </html>
