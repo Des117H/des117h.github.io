@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" href="../static/css/register.css" th:href="@{/css/welcome.css}">
+    <script src="https://kit.fontawesome.com/94b9d6322d.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="header-div">
+        <div class="icon-container logo-div">
+            <img class="circle-logo" src="../static/logo/circle.png" th:src="@{/logo/circle.png}" alt="logo" />
+            <img class="name-logo" src="../static/logo/name.png" th:src="@{/logo/name.png}" alt="logo" />
+        </div>
+    </div>
+
+    <div class="body-div">
+        <div class="textBox">
+            <h2>Text with love,<br>like your <span>Grandma</span></h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                deserunt mollit anim id est laborum.
+            </p>
+            <button id="btnAbout" type="button" class="se_button">About Us</button>
+            <div class="text sign-up-text">Already have an account? <label for="flip">Log in now</label></div>
+        </div>
+        <div class="imgBox">
+            <img src="grandma.png" class="grandma">
+        </div>
+    </div>
+</body>
+
+</html>
