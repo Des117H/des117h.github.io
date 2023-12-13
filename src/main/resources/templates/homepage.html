@@ -1,130 +1,192 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8" />
+    <title>Homepage</title>
+    <link rel="stylesheet" href="../static/css/style.css" />
+    <link rel="stylesheet" href="../static/css/homepage.css" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/94b9d6322d.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
 
-<head>
-	<meta charset="utf-8">
-	<title>Homepage</title>
-	<link rel="stylesheet" href="../static/css/style.css">
-	<link rel="stylesheet" href="../static/css/homepage.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-	<script src="https://kit.fontawesome.com/94b9d6322d.js" crossorigin="anonymous"></script>
-</head>
+  <body>
+    <div class="header-div">
+      <div class="icon-container logo-div">
+        <img
+          class="circle-logo"
+          src="../static/logo/circle.png"
+          th:src="@{/logo/circle.png}"
+          alt="logo"
+        />
+        <img
+          class="name-logo"
+          src="../static/logo/name.png"
+          th:src="@{/logo/name.png}"
+          alt="logo"
+        />
+      </div>
+      <nav class="header-navigation">
+        <div>Premium</div>
+        <a href="account" class="account-link">Account</a>
+        <a href="../" class="logout-link">Log Out</a>
+      </nav>
+    </div>
 
-<body>
-	<div class="header-div">
-		<div class="icon-container logo-div">
-			<img class="circle-logo" src="../static/logo/circle.png" th:src="@{/logo/circle.png}" alt="logo">
-			<img class="name-logo" src="../static/logo/name.png" th:src="@{/logo/name.png}" alt="logo">
-		</div>
-		<nav class="header-navigation">
-			<div>
-				Premium
-			</div>
-			<a href="account" class="account-link">Account</a>
-			<a href="../" class="logout-link">Log Out</a>
-		</nav>
-	</div>
+    <div class="body-div">
+      <div class="search-bar">
+        <input type="search" placeholder="Search..." id="search" item-search />
+      </div>
 
-	<div class="body-div">
+      <div
+        id="loading-modal"
+        class="modal fade"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="loadingModalTitle"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="loadingModalTitle">
+                Uploading File...
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <div class="progress">
+                <div
+                  class="progress-bar progress-bar-striped progress-bar-animated"
+                  role="progressbar"
+                  aria-valuenow="0"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-		<div class="search-bar">
-			<input type="search" placeholder="Search..." id="search" item-search>
-		</div>
+      <div class="add-doc">
+        <form
+          action="/upload"
+          id="file-upload-form"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          <div class="add-doc-form">
+            <label for="file">Choose a .doc or .docx file:</label>
+            <input
+              type="file"
+              name="file"
+              id="file-input"
+              accept=".doc, .docx"
+              required
+              
+            />
+          </div>
+          <div style="display: none">
+            <input
+              type="text"
+              name="user"
+              id="user-id"
+              value="0186e0bf-2e30-4d1d-b23b-f72bf7520fbc"
+              required
+            />
+          </div>
+          <button
+            class="se_button"
+            type="submit"
+            onclick="uploadAndShowLoading()"
+          >
+            Upload
+          </button>
+        </form>
+        <button class="button" onclick="getDocumentsList()">test get doc metadata</button>
+      </div>
 
-		<div id="loading-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="loadingModalTitle"
-			aria-hidden="true">
-			<div class="modal-dialog modal-dialog-centered">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="loadingModalTitle">Uploading File...</h5>
-						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-					</div>
-					<div class="modal-body">
-						<div class="progress">
-							<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
-								aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+      <div id="document-container" class="doc-container">
+        <div class="doc-box">
+          <div class="left-box">
+            <i class="fa-regular fa-file fa-xl" alt="file icon"></i>
+            <p doc-name class="doc-name">asdasd</p>
+          </div>
 
-		<div class="add-doc">
-			<form action="/upload" id="file-upload-form" method="post" enctype="multipart/form-data">
-				<div class="add-doc-form">
-					<label for="file">Choose a .doc or .docx file:</label>
-					<input type="file" name="file" id="file-input" accept=".doc, .docx" required>
-				</div>
-				<div style="display: none;">
-					<input type="text" name="user" id="user-id" value="0186e0bf-2e30-4d1d-b23b-f72bf7520fbc" required>
-				</div>
-				<button class="se_button" type="submit" onclick="uploadAndShowLoading()">Upload</button>
-			</form>
-		</div>
+          <div class="right-box">
+            <p doc-date class="doc-date">asgasgasg</p>
+            <i class="fa-regular fa-trash-can fa-xl" alt="delete icon"></i>
+          </div>
+        </div>
+      </div>
 
-		<button onclick="getDocumentsList()">test get doc metadata</button>
+     
+      <template id="doc-template">
+        <div class="doc-box">
+          <div class="left-box">
+            <i class="fa-regular fa-file fa-xl" alt="file icon"></i>
+            <p doc-name class="doc-name">asdasd</p>
+          </div>
 
-		<div id="document-container" class="doc-container">
-			<div class="doc-box">
-				<div class="left-box">
-					<i class="fa-regular fa-file fa-xl" alt="file icon"></i>
-					<p doc-name class="doc-name">asdasd</p>
-				</div>
+          <div class="right-box">
+            <p doc-date class="doc-date">asgasgasg</p>
+            <i class="fa-regular fa-trash-can fa-xl" alt="delete icon"></i>
+          </div>
+        </div>
+      </template>
+    </div>
 
-				<div class="right-box">
-					<p doc-date class="doc-date">asgasgasg</p>
-					<i class="fa-regular fa-trash-can fa-xl" alt="delete icon"></i>
-				</div>
-			</div>
-		</div>
+    <div class="footer-div">
+      <div class="col-1">
+        <h3>SITE MAP</h3>
+        <a href="#">Account</a>
+        <a href="#">Homepage</a>
+      </div>
+      <div class="col-2">
+        <h3>CONTACT US</h3>
+        <label for="phone-num">028 3776 1300</label>
+        <label for="addr"
+          >702 Nguyen Van Linh, Tan Hung Ward, District 7, Ho Chi Minh City,
+          700000</label
+        >
+      </div>
+      <div class="col-3">
+        <h3>SOCIAL MEDIA</h3>
+        <a href="#">Facebook</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">Instagram</a>
+        <a href="#">Twitter</a>
+        <a href="#">Youtube</a>
+      </div>
+      <div class="col-4">
+        <h3>RECEIVE NOTIFICATION</h3>
+        <input
+          type="email"
+          placeholder="Enter your email address"
+          id="footer-email"
+        />
+        <input type="submit" value="Subscribe" id="footer-email-btn" />
+      </div>
+    </div>
 
-		<!-- <a href="document-link">			
-		</a> -->
-		<template id="doc-template">
-			<div class="doc-box">
-				<div class="left-box">
-					<i class="fa-regular fa-file fa-xl" alt="file icon"></i>
-					<p doc-name class="doc-name">asdasd</p>
-				</div>
-
-				<div class="right-box">
-					<p doc-date class="doc-date">asgasgasg</p>
-					<i class="fa-regular fa-trash-can fa-xl" alt="delete icon"></i>
-				</div>
-			</div>
-		</template>
-	</div>
-
-	<div class="footer-div">
-		<div class="col-1">
-			<h3>SITE MAP</h3>
-			<a href="#">Account</a>
-			<a href="#">Homepage</a>
-		</div>
-		<div class="col-2">
-			<h3>CONTACT US</h3>
-			<label for="phone-num">028 3776 1300</label>
-			<label for="addr">702 Nguyen Van Linh, Tan Hung Ward, District 7, Ho Chi Minh City, 700000</label>
-		</div>
-		<div class="col-3">
-			<h3>SOCIAL MEDIA</h3>
-			<a href="#">Facebook</a>
-			<a href="#">LinkedIn</a>
-			<a href="#">Instagram</a>
-			<a href="#">Twitter</a>
-			<a href="#">Youtube</a>
-		</div>
-		<div class="col-4">
-			<h3>RECEIVE NOTIFICATION</h3>
-			<input type="email" placeholder="Enter your email address" id="footer-email">
-			<input type="submit" value="Subscribe" id="footer-email-btn">
-		</div>
-	</div>
-
-	<script async src="https://js.stripe.com/v3/buy-button.js"></script>
-	<script defer src="../static/js/homepage.js" th:src="@{js/homepage.js}"> </script>
-</body>
-
+    <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+    <script
+      defer
+      src="../static/js/homepage.js"
+      th:src="@{js/homepage.js}"
+    ></script>
+  </body>
 </html>

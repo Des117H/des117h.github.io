@@ -1,82 +1,81 @@
-* {
-	/* background-color: var(--theme); */
-}
-
-.search-bar {
+.body-div {
 	display: flex;
-	align-items: center;
-	min-width: 350px;
-	width: 85vw;
-	margin: 10px auto;
-	border-radius: 10px;
-	border: 2px solid var(--se_primary);
-}
-
-.search-bar input[type="search"] {
-	flex: 1;
-	border: none;
-	padding: 10px;
-	font-size: 16px;
-	outline: none;
-	border-radius: 10px;
-	width: 100%;
-}
-
-.search-bar input[type="search"]::placeholder {
-	color: #999;
-}
-
-.doc-box {
-	display: flex;
-	flex-direction: row;
+	flex-wrap: wrap; /* Wrap the items to the next line if there's not enough space */
 	justify-content: space-between;
-	width: 85%;
-	margin: auto;
-	border: #999 2px solid;
+	padding: 20px;
+  }
+  
+  .search-bar {
+	width: 100%;
+	margin-bottom: 20px;
+	border: 1px solid var(--se_primary);
 	padding: 10px;
+  }
+  
+  .doc-container {
+	width: 70%; /* Adjust based on your preference */
+	box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  }
+  
+  .add-doc {
+	margin-bottom: 20px; /* Add some space between the sections */
+  }
+  
+  /* Rest of the CSS remains unchanged */
+  #loading-modal .modal-content {
+	background-color: #fff;
+  }
+  
+  .add-doc-form {
 	margin-bottom: 10px;
-}
-
-.left-box,
-.right-box {
+  }
+  
+  #file-input {
+	margin-top: 5px;
+  }
+  
+  .add-doc-form label {
+	font-weight: bold;
+	margin-bottom: 5px;
+	display: block;
+  }
+  
+  #file-upload-form {
+	width: 100%;
+  }
+  
+  #file-upload-form button {
+	width: 100%;
+  }
+  
+  .doc-box {
 	display: flex;
-	flex-direction: row;
+	justify-content: space-between;
+	background-color: #fff;
+	padding: 15px;
+	border: 1px solid #ced4da;
+	border-radius: 5px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .left-box, .right-box {
+	display: flex;
 	align-items: center;
-}
-
-.doc-name {
-	margin-left: 5px;
-	font-size: 17px;
-}
-
-.doc-date {
-	margin-right: 5px;
-	font-size: 17px;
-}
-
-.add-doc {
-	border: 1px solid #000;
-	width: 85%;
-	margin: auto;
-	padding: 10px;
-	margin-bottom: 10px;
-	font-size: 16px !important;
-}
-
-.add-doc form {
-	font-size: 17px !important;
-}
-
-.add-doc form button {
-	margin-right: 50%;
-	margin-left: 50%;
-	height: 5vh;
-	width: 10vh;
-}
-
-.footer-div {
-	position: fixed;
-	bottom: 0;
-	right: 0;
-	left: 0;
-}
+  }
+  
+  .fa-file, .fa-trash-can {
+	margin-right: 10px;
+  }
+  
+  /* Responsive styles for smaller screens */
+  @media (max-width: 600px) {
+	.body-div {
+	  flex-direction: column;
+	}
+  
+	.add-doc, .doc-container {
+	  width: 100%;
+	  margin-right: 0;
+	}
+  }
+  
