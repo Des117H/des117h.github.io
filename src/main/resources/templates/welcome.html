@@ -22,20 +22,90 @@
     <div class="body-div">
         <div class="textBox">
             <h2>Text with love,<br>like your <span>Grandma</span></h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                deserunt mollit anim id est laborum.
+            <p>Grandmaly is a Large Language Model AI system with the purpose of fixing languid errors of an English
+                manuscript, such errors including grammatical mistakes, typos, word use, and punctuation. All you have
+                to do is upload a doc or docx file and download the fixed word file! <br><br>
+
+                With an account, you will be provided with the option to subscribe and enjoy extended perks of
+                Grandmaly. You will also be given a 2-week trial period before deciding to subscribe.
             </p>
-            <button id="btnAbout" type="button" class="se_button">About Us</button>
-            <div class="text sign-up-text">Already have an account? <label for="flip">Log in now</label></div>
+            <button id="btnAbout" type="button" class="se_button">Sign Up</button>
+            <div class="imgBox">
+                <img src="grandma.png" class="grandma">
+            </div>
+
+            <div class="func">
+                <h2>Functionalities</h2>
+                <div class="slide active">
+                    <img src="slide1.jpeg" alt="">
+                    <div class="info">
+                        <h3>Manuscript Upload and Processing</h3>
+                        <p>Users can upload their academic manuscripts in various formats, including doc and
+                            docx.<br><br>
+                            The system processes the manuscript, dividing it into paragraphs, and integrates with a
+                            Large Language Model API for
+                            comprehensive editing.<br><br>
+                            Special consideration is given to handling citations, especially those generated using
+                            EndNote.</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="slide2.jpeg" alt="">
+                    <div class="info">
+                        <h3>Automated Editing</h3>
+                        <p>The system submits each paragraph to the Large Language Model API with prompts to address
+                            grammar, typographical errors,
+                            word usage, and punctuation.<br><br>
+                            Responses from the API are collected and merged back into the original manuscript.</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="slide3.jpeg" alt="">
+                    <div class="info">
+                        <h3>User Subscription Management</h3>
+                        <p>Users can create accounts with different roles, including admin and subscribed users.<br><br>
+                            A trial period of two weeks is provided for new users to explore the app's
+                            functionality.<br><br>
+                            Subscribed users enjoy access based on their subscription plans.</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="slide4.jpeg" alt="">
+                    <div class="info">
+                        <h3>Payment Integration</h3>
+                        <p>The app integrates payment methods such as Stripe and Momo, providing a seamless and secure
+                            payment experience.<br><br>
+                            Subscribed users can manage their subscriptions, ensuring uninterrupted access to the
+                            manuscript editing services.</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="slide5 copy.jpeg" alt="">
+                    <div class="info">
+                        <h3>Comparison with Existing Apps</h3>
+                        <p>Addresses common issues found in similar apps like Grammarly and Quiltbot, such as high costs
+                            and concerns about data
+                            privacy and confidentiality.<br><br>
+                            The focus on academic content and specific features tailored for manuscript editing sets it
+                            apart from generic
+                            text-based processing tools.</p>
+                    </div>
+                </div>
+
+                <div class="navigation">
+                    <div class="btn active"></div>
+                    <div class="btn"></div>
+                    <div class="btn"></div>
+                    <div class="btn"></div>
+                    <div class="btn"></div>
+                </div>
+            </div>
+
+            <div class="about-us">
+                <h2>About Us</h2>
+            </div>
         </div>
-        <div class="imgBox">
-            <img src="grandma.png" class="grandma">
-        </div>
-    </div>
-    <script defer src="../static/js/welcome.js" th:src="@{../static/js/welcome.js}"></script>
+        <script defer src="../static/js/welcome.js" th:src="@{../static/js/welcome.js}"></script>
 </body>
 
 </html>

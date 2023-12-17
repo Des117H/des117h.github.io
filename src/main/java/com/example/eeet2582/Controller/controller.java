@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class controller {
 
-     @GetMapping("/account")
+    @GetMapping("/account")
     String getAccount(Model model) {
         return "account";
     }
@@ -25,5 +25,10 @@ public class controller {
     @GetMapping
     String getIndex(Model model) {
         return "index";
+    }
+
+    @GetMapping("/welcome")
+    String getWelcome(Model model) {
+        return "welcome";
     }
 }
