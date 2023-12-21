@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome</title>
 
+
     <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
-    <link rel="stylesheet" href="../static/css/register.css" th:href="@{/css/welcome.css}">
+    <link rel="stylesheet" href="../static/css/welcome.css" th:href="@{/css/welcome.css}">
     <script src="https://kit.fontawesome.com/94b9d6322d.js" crossorigin="anonymous"></script>
 </head>
 
@@ -17,95 +18,163 @@
             <img class="circle-logo" src="../static/logo/circle.png" th:src="@{/logo/circle.png}" alt="logo" />
             <img class="name-logo" src="../static/logo/name.png" th:src="@{/logo/name.png}" alt="logo" />
         </div>
+        <nav class="header-navigation">
+            <div>Premium</div>
+            <a href="account" class="account-link">Account</a>
+            <a href="homepage.html" class="homepage">Homepage</a>
+        </nav>
     </div>
 
     <div class="body-div">
-        <div class="textBox">
-            <h2>Text with love,<br>like your <span>Grandma</span></h2>
-            <p>Grandmaly is a Large Language Model AI system with the purpose of fixing languid errors of an English
-                manuscript, such errors including grammatical mistakes, typos, word use, and punctuation. All you have
-                to do is upload a doc or docx file and download the fixed word file! <br><br>
+        <div class="description">
+            <div class="text-box">
+                <h2>Text with love,<br>like your <span>Grandma</span></h2>
+                <p>Grandmaly is a Large Language Model AI system with the purpose of fixing languid errors of an English
+                    manuscript, such errors including grammatical mistakes, typos, word use, and punctuation. All you
+                    have to do is upload a doc or docx file and download the fixed word file! <br><br>
 
-                With an account, you will be provided with the option to subscribe and enjoy extended perks of
-                Grandmaly. You will also be given a 2-week trial period before deciding to subscribe.
-            </p>
-            <button id="btnAbout" type="button" class="se_button">Sign Up</button>
-            <div class="imgBox">
-                <img src="grandma.png" class="grandma">
+                    With an account, you will be provided with the option to subscribe and enjoy extended perks of
+                    Grandmaly. You will also be given a 2-week trial period before deciding to subscribe.
+                </p>
+                <button id="btnAbout" type="button" class="se_button" onclick="location.href='index.html'">Sign
+                    Up</button>
             </div>
-
-            <div class="func">
-                <h2>Functionalities</h2>
-                <div class="slide active">
-                    <img src="slide1.jpeg" alt="">
-                    <div class="info">
-                        <h3>Manuscript Upload and Processing</h3>
-                        <p>Users can upload their academic manuscripts in various formats, including doc and
-                            docx.<br><br>
-                            The system processes the manuscript, dividing it into paragraphs, and integrates with a
-                            Large Language Model API for
-                            comprehensive editing.<br><br>
-                            Special consideration is given to handling citations, especially those generated using
-                            EndNote.</p>
-                    </div>
-                </div>
-                <div class="slide">
-                    <img src="slide2.jpeg" alt="">
-                    <div class="info">
-                        <h3>Automated Editing</h3>
-                        <p>The system submits each paragraph to the Large Language Model API with prompts to address
-                            grammar, typographical errors,
-                            word usage, and punctuation.<br><br>
-                            Responses from the API are collected and merged back into the original manuscript.</p>
-                    </div>
-                </div>
-                <div class="slide">
-                    <img src="slide3.jpeg" alt="">
-                    <div class="info">
-                        <h3>User Subscription Management</h3>
-                        <p>Users can create accounts with different roles, including admin and subscribed users.<br><br>
-                            A trial period of two weeks is provided for new users to explore the app's
-                            functionality.<br><br>
-                            Subscribed users enjoy access based on their subscription plans.</p>
-                    </div>
-                </div>
-                <div class="slide">
-                    <img src="slide4.jpeg" alt="">
-                    <div class="info">
-                        <h3>Payment Integration</h3>
-                        <p>The app integrates payment methods such as Stripe and Momo, providing a seamless and secure
-                            payment experience.<br><br>
-                            Subscribed users can manage their subscriptions, ensuring uninterrupted access to the
-                            manuscript editing services.</p>
-                    </div>
-                </div>
-                <div class="slide">
-                    <img src="slide5 copy.jpeg" alt="">
-                    <div class="info">
-                        <h3>Comparison with Existing Apps</h3>
-                        <p>Addresses common issues found in similar apps like Grammarly and Quiltbot, such as high costs
-                            and concerns about data
-                            privacy and confidentiality.<br><br>
-                            The focus on academic content and specific features tailored for manuscript editing sets it
-                            apart from generic
-                            text-based processing tools.</p>
-                    </div>
-                </div>
-
-                <div class="navigation">
-                    <div class="btn active"></div>
-                    <div class="btn"></div>
-                    <div class="btn"></div>
-                    <div class="btn"></div>
-                    <div class="btn"></div>
-                </div>
-            </div>
-
-            <div class="about-us">
-                <h2>About Us</h2>
+            <div class="img-box">
+                <img src="../static/image/grandma.png" th:src="@{/image/grandma.png}" alt="">
             </div>
         </div>
-        <script defer src="../static/js/welcome.js" th:src="@{../static/js/welcome.js}"></script>
+
+        <div class="func">
+            <h2>Functionalities</h2>
+            <div class="slide active">
+                <img src="../static/image/slide1.jpeg" th:src="@{/image/slide1.jpeg}" alt="">
+                <div class="info">
+                    <h3>Manuscript Upload and Processing</h3>
+                    <p>Users can upload their academic manuscripts in various formats, including doc and
+                        docx.<br><br>
+                        The system processes the manuscript, dividing it into paragraphs, and integrates with a
+                        Large Language Model API for
+                        comprehensive editing.<br><br>
+                        Special consideration is given to handling citations, especially those generated using
+                        EndNote.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="../static/image/slide2.jpeg" th:src="@{/image/slide2.jpeg}" alt="">
+                <div class="info">
+                    <h3>Automated Editing</h3>
+                    <p>The system submits each paragraph to the Large Language Model API with prompts to address
+                        grammar, typographical errors,
+                        word usage, and punctuation.<br><br>
+                        Responses from the API are collected and merged back into the original manuscript.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="../static/image/slide3.jpeg" th:src="@{/image/slide3.jpeg}" alt="">
+                <div class="info">
+                    <h3>User Subscription Management</h3>
+                    <p>Users can create accounts with different roles, including admin and subscribed users.<br><br>
+                        A trial period of two weeks is provided for new users to explore the app's
+                        functionality.<br><br>
+                        Subscribed users enjoy access based on their subscription plans.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="../static/image/slide4.jpeg" th:src="@{/image/slide4.jpeg}" alt="">
+                <div class="info">
+                    <h3>Payment Integration</h3>
+                    <p>The app integrates payment methods such as Stripe and Momo, providing a seamless and secure
+                        payment experience.<br><br>
+                        Subscribed users can manage their subscriptions, ensuring uninterrupted access to the
+                        manuscript editing services.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="../static/image/slide5.jpeg" th:src="@{/image/slide5.jpeg}" alt="">
+                <div class="info">
+                    <h3>Comparison with Existing Apps</h3>
+                    <p>Addresses common issues found in similar apps like Grammarly and Quiltbot, such as high costs
+                        and concerns about data
+                        privacy and confidentiality.<br><br>
+                        The focus on academic content and specific features tailored for manuscript editing sets it
+                        apart from generic
+                        text-based processing tools.</p>
+                </div>
+            </div>
+
+            <div class="navigation">
+                <div class="btn active"></div>
+                <div class="btn"></div>
+                <div class="btn"></div>
+                <div class="btn"></div>
+                <div class="btn"></div>
+            </div>
+        </div>
+
+        <div class="about-us">
+            <div class="general">
+                <h2>About Us</h2>
+                <p>Grandmaly was developed by a team of four software engineering students from RMIT University. This
+                    project was finished in twelve weeks with our main focus being the architecture of the website. This
+                    dynamic team, driven
+                    by passion and innovation, has crafted an exceptional online platform that stands out for its
+                    ingenuity and
+                    user-centric approach.</p>
+            </div>
+
+            <div class="container">
+                <div class="card">
+                    <img src="../static/image/businessguy.jpeg" th:src="@{/image/businessguy.jpeg}" alt="">
+                    <div class="text">
+                        <h3>Nguyen Van Quy</h3>
+                        <p>Spearheading the project, Quy brings a wealth of technical expertise and leadership to
+                            Grandmaly.
+                            With a focus on robust coding practices and system architecture, they played a pivotal role
+                            in
+                            bringing the website to life.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="../static/image/businessguy.jpeg" th:src="@{/image/businessguy.jpeg}" alt="">
+                    <div class="text">
+                        <h3>Tu Gia Dinh</h3>
+                        <p>The aesthetic appeal and user-friendliness of Grandmaly owe much to the creative flair of
+                            Dinh.
+                            As the UX/UI designer,
+                            they meticulously designed the interface, ensuring a seamless and engaging experience for
+                            every
+                            visitor.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="../static/image/businessguy.jpeg" th:src="@{/image/businessguy.jpeg}" alt="">
+                    <div class="text">
+                        <h3>Tran Le Quoc Huy</h3>
+                        <p>Huy is the genius behind the scenes, handling the backend intricacies of Grandmaly. Their
+                            proficiency in server-side
+                            technologies and database management contributed to the website's smooth functionality and
+                            data
+                            integrity.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="../static/image/businessguy.jpeg" th:src="@{/image/businessguy.jpeg}" alt="">
+                    <div class="text">
+                        <h3>Vu Nguyet Minh</h3>
+                        <p>Ensuring Grandmaly meets the highest standards, Minh took charge of quality assurance.
+                            Rigorous
+                            testing, bug
+                            squashing, and performance optimization were their forte, guaranteeing a reliable and
+                            error-free
+                            user experience.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script defer src="../static/js/welcome.js" th:src="@{../static/js/welcome.js}"></script>
 </body>
 
 </html>

@@ -11,7 +11,6 @@ var manualNav = function (manual) {
         });
     });
 
-
     slides[manual].classList.add('active');
     btns[manual].classList.add('active');
 }
@@ -20,5 +19,5 @@ btns.forEach((btn, i) => {
     btn.addEventListener("click", () => {
         manualNav(i);
         currentSlide = i;
-    })
-})
+    });
+});
